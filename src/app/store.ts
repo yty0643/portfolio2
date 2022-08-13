@@ -1,9 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import scaleReducer from '../features/scale/scaleSlice';
+import coordReducer from '../features/coord/coordSlice';
+import nodesReducer from '../features/nodes/nodesSlice';
+import edgesReducer from '../features/edges/edgesSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    scale: scaleReducer,
+    coord: coordReducer,
+    nodes: nodesReducer,
+    edges: edgesReducer,
   },
 });
 

@@ -1,0 +1,31 @@
+*{
+    background-color: rgb(120, 144, 154);
+    display: flex;
+    box-shadow: rgb(39, 41, 44) 3px 3px 6px 0px inset, rgba(0, 0, 0, 0.5) -3px -3px 6px 1px inset;
+    pointer-events: all !important;
+    color: rgb(243, 243, 243) !important;
+    width: calc(100px * 2px);
+    overflow: hidden;
+    touch-action: auto;
+    pointer-events: all;
+    flex-direction: row;
+    color: rgb(181, 183, 189);
+    
+    color: rgb(205, 208, 216);
+    color: rgb(197, 201, 209);
+    color: rgb(214, 216, 221);
+    color: rgb(21, 21, 28);
+    color: rgb(134, 255, 100);
+    color: rgb(255, 105, 100);
+    color: rgb(208, 208, 0);
+    color: rgb(34, 186, 220);
+    color: rgb(239, 100, 255);
+    color: rgb(24, 209, 7);
+    color: rgb(100, 100, 255);
+    color: rgb(84, 141, 255);
+    color: initial;
+    position: sticky;
+    box-sizing: content-box;
+    text-align: start;
+}
+
