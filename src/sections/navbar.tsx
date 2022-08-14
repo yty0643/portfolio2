@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import NavBtn from '../components/nav_btn';
 
@@ -30,15 +30,17 @@ align-items: center;
 
 const Navbar = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
+    const ref = useRef<HTMLElement>(null);
+
     return (
-        <Nav
+        <Nav ref={ref}
             isActive={isActive}
             onMouseEnter={() => { setIsActive(true) }}
             onMouseLeave={() => { setIsActive(false) }}>
             <p>Logo</p>
             <Btns>
-                <NavBtn>Intro</NavBtn>
-                <NavBtn>Projects</NavBtn>
+                <NavBtn navRef={ref} index={0}>Intro</NavBtn>
+                <NavBtn navRef={ref} index={1}>Projects</NavBtn>
             </Btns>
         </Nav>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import Intro from './sections/intro';
 import Navbar from './sections/navbar';
@@ -13,10 +13,15 @@ width: calc(100vw - (100vw - 100%));
 `
 
 const App = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle isDark={false} />
-      <Div>
+      <Div ref={ref}>
         <Navbar />
         <Intro />
         <Projects />

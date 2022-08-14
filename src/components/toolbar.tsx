@@ -25,7 +25,7 @@ border: 1px solid rgb(60, 118, 233);
 font-size: 0.8rem;
 font-weight: 300;
 color: white;
-background-color: rgb(60, 118, 233);;
+background-color: rgb(60, 118, 233);
 `
 
 const Btn = styled.button`
@@ -40,10 +40,12 @@ background-color: white;
 interface ITools{
     isActive: boolean,
 }
+
 const Tools = styled.div<ITools>`
 overflow-y: scroll;
 overflow-x: visible;
 height: calc(100vh - 6rem - 6rem - 3rem);
+max-height: 10rem;
 ${({ isActive })=> !isActive && `height: 0rem;`}
 ::-webkit-scrollbar {
     width: 2px;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import styled from 'styled-components';
 
 const Btn = styled.button`
@@ -11,9 +11,20 @@ background-color: transparent;
 }
 `
 
-const NavBtn = ({ children }: { children: string }) => {
+const NavBtn = ({ navRef, index, children }: { navRef: RefObject<HTMLElement>, index: number, children: string }) => {
+    const onClick = (e: React.MouseEvent ) => {
+        let nav: Element = navRef.current!;
+        let i = index + 1;
+        while (i--) {
+            nav = nav.nextSibling as Element;
+        }
+        nav.scrollIntoView({
+            behavior: 'smooth',
+        })
+    }
+    
     return (
-        <Btn>
+        <Btn onClick={onClick}>
             {children}
         </Btn>
     );

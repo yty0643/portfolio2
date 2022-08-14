@@ -6,6 +6,8 @@ import Toolbar from '../components/toolbar';
 import Palette from '../components/palette';
 import ZoomBtn from '../components/zoom_btn';
 import { selectIsLock } from '../features/isLock/isLockSlice';
+import DocBtn from '../components/doc_btn';
+import ContactBtn from '../components/contact_btn';
 
 const Section = styled.section`
 position: relative;
@@ -21,7 +23,8 @@ bottom: 0;
 left: 0;
 display:flex;
 flex-direction: column;
-padding: 1rem;
+margin: 1rem;
+border: 1px solid rgb(214, 216, 221);
 `
 
 interface ILock{
@@ -37,26 +40,58 @@ width: 100%;
 height: 100%;
 `
 
-const Title = styled.div`
+const Box = styled.div`
+z-index: 3;
 position: absolute;
 top: 50%;
 left: 10%;
 display: flex;
-align-items: center;
+flex-direction: column;
 width: 30%;
 transform: translateY(-50%);
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+`
+
+const Title = styled.p`
+font-size: 3rem;
+font-weight: 700;
+color: rgb(16, 16, 17);
+`
+
+const SubTitle = styled.p`
+margin: 1.5rem 0;
+font-size: 1rem;
+font-weight: 500;
+color: rgb(56, 56, 67);
+`
+const Btns = styled.div`
+display: flex;
+align-items: center;
+margin-left: auto;
 `
 
 const Intro = () => {
     const isLock = useAppSelector(selectIsLock);
     return (
         <Section>
-            <Title>
-            안녕하세요. 주니어 웹 개발자(프론트엔드) 윤태영입니다.
-            주로 사용하는 언어는 Javascript 입니다. 이외에도 Typescript, React, CSS, HTML에 대한 개발 경험이 있으며, C++을 통해 알고리즘을 공부하고 있습니다.
-            신입 개발자로 취업하기 위해 여러 개인 프로젝트를 진행하고 있으며, GitHub를 통해 소스코드를 관리하고 있습니다.
-            유지 보수하기 좋은 코드, 확장성 있는 설계가 가능한 개발자로 성장하고 싶습니다. 초기에 설계방식을 충분히 고려하지 않으면 여러 사이드 이펙트가 발생하고, 확장시 많은 비용이 든다는 것을 경험하였습니다. 작게는 변수의 이름부터 코드 중복, 크게는 디자인 패턴 등 확장성 있는 개발에 신경 쓰고 있습니다.
-            </Title>
+            <Box>
+                <Title>
+                    안녕하세요.<br/>
+                    웹 프론트엔드 개발자 윤태영입니다.
+                </Title>
+                <SubTitle>
+                    주로 사용하는 기술 스택은 Typescript, Javascript, React 입니다.
+                    대학을 통해 다양한 언어를 경험 했고, C++을 통해 알고리즘을 공부하고 있습니다.
+                    이외에도 실무에서 주로사용하는 라이브러리, 프레임워크 위주로 꾸준히 공부하고 있습니다.
+                </SubTitle>
+                <Btns>
+                    <ContactBtn />
+                    <DocBtn />
+                </Btns>
+            </Box>
             <Palette />
             <BtnBox>
                 <LockBtn />
