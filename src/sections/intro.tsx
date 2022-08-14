@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useAppSelector } from '../app/hooks';
 import LockBtn from '../components/lock_btn';
+import Toolbar from '../components/toolbar';
 import Palette from '../components/palette';
 import ZoomBtn from '../components/zoom_btn';
 import { selectIsLock } from '../features/isLock/isLockSlice';
@@ -45,6 +46,7 @@ const Intro = () => {
                 <ZoomBtn />
                 <ZoomBtn minus/>
             </BtnBox>
+            <Toolbar />
             <Lock isLock={isLock} />
         </Section>
     );
