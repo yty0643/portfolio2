@@ -2,9 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 interface INode{
-    reverse:boolean,
     x: number,
     y: number,
+    ipX: number,
+    ipY: number,
+    opX: number,
+    opY: number,
     width: number,
     height: number,
     name: string,
@@ -17,28 +20,37 @@ export interface INodesState {
 const initialState: INodesState = {
     list: [
         {
-            reverse: true,
-            x: 0,
-            y: 0,
-            width: 160,
-            height: 160,
-            name: "Skills",
-        },
-        {
-            reverse: false,
-            x: 0,
-            y: 0,
+            x: 100,
+            y: 100,
+            ipX: 0,
+            ipY: 0,
+            opX: 0,
+            opY: 0,
             width: 160,
             height: 48,
             name: "React",
         },
         {
-            reverse: false,
-            x: 0,
-            y: 0,
+            x: 200,
+            y: 200,
+            ipX: 0,
+            ipY: 0,
+            opX: 0,
+            opY: 0,
             width: 160,
             height: 48,
             name: "Typescript",
+        },
+        {
+            x: 300,
+            y: 300,
+            ipX: 0,
+            ipY: 0,
+            opX: 0,
+            opY: 0,
+            width: 160,
+            height: 48,
+            name: "Javascript",
         }
     ],
 };
@@ -50,8 +62,10 @@ export const nodesSlice = createSlice({
         setNodes: (state, action) => {
             state.list[action.payload.index] = {
                 ...state.list[action.payload.index],
-                x: action.payload.x,
-                y: action.payload.y,
+                ipX: action.payload.ipX,
+                ipY: action.payload.ipY,
+                opX: action.payload.opX,
+                opY: action.payload.opY,
             };
         },
         addNode: (state) => {

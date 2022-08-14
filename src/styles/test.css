@@ -10,8 +10,10 @@
     pointer-events: all;
     flex-direction: row;
     color: rgb(181, 183, 189);
-    
-    color: rgb(205, 208, 216);
+    stroke-dasharray: 1360;
+    animation: dash 2s linear infinite;
+
+    color: rgb(29, 30, 33);
     color: rgb(197, 201, 209);
     color: rgb(214, 216, 221);
     color: rgb(21, 21, 28);
@@ -27,5 +29,6 @@
     position: sticky;
     box-sizing: content-box;
     text-align: start;
+    text-align: center;
+    align-items: center;
 }
-

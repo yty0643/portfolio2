@@ -4,8 +4,8 @@ import { useAppDispatch } from '../app/hooks';
 import { decrement, increment } from '../features/scale/scaleSlice';
 
 const Btn = styled.button`
-width: 3rem;
-height: 3rem;
+width: 2rem;
+height: 2rem;
 `
 const ZoomBtn = ({ minus }: { minus?: boolean }) => {
     const dispatch = useAppDispatch();

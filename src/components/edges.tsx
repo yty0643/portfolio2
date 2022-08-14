@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useAppSelector } from '../app/hooks';
-import { selectEdges } from '../features/edges/edgesSlice';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { popEdges, selectEdges, selecTempEdge, setEdges } from '../features/edges/edgesSlice';
 import { selectNodes } from '../features/nodes/nodesSlice';
+import Edge from './edge';
 
 const Svg = styled.svg`
 overflow: visible;
@@ -12,30 +13,42 @@ top: 0;
 left: 0;
 `
 
+
 const Edges = () => {
+    const dispatch = useAppDispatch();
     const nodes = useAppSelector(selectNodes);
     const edges = useAppSelector(selectEdges);
+    const tempEdge = useAppSelector(selecTempEdge);
+    const onClick = (index: number) => {
+        dispatch(popEdges(index));
+    };
 
     return (
         <Svg width="100%" height="100%">
             {edges.map((edge, index) => {
-                let sx = nodes[index].x;
-                let sy = nodes[index].y;
-                let ex = nodes[edge].x;
-                let ey = nodes[edge].y;
-                let value = 150;
-                if (ex - sx < 150)
-                    value = 0;
-                let ax = ex - value;
-                let ay = sy;
-                let bx = sx + value;
-                let by = ey;
-                if (sx >= ex) {
-                    ax = sx + 150;
-                    bx = ex - 150;
+                const sx = nodes[edge[0]].ipX;
+                const sy = nodes[edge[0]].ipY;
+                const ex = nodes[edge[1]].opX;
+                const ey = nodes[edge[1]].opY;
+                let x1 = ex;
+                let y1 = sy;
+                let x2 = sx;
+                let y2 = ey;
+                if (sx <= ex) {
+                    x1 = sx - 150;
+                    x2 = ex + 150;
                 }
-                return <path key={index} d={`M${sx} ${sy} C${ax} ${ay} ${bx} ${by} ${ex} ${ey}`} stroke="blue " strokeWidth="3" fill="none" markerEnd='url(#)' />
+                return <Edge
+                    key={index}
+                    sx={sx} sy={sy} x1={x1} y1={y1} x2={x2} y2={y2} ex={ex} ey={ey}
+                    onClick={() => onClick(index)} />
             })}
+            {tempEdge &&
+                <Edge
+                
+                sx={tempEdge.ipX} sy={tempEdge.ipY} x1={tempEdge.opX} y1={tempEdge.ipY} x2={tempEdge.ipX} y2={tempEdge.opY} ex={tempEdge.opX} ey={tempEdge.opY}
+                onClick={() => { }} temp={true} />
+            }
         </Svg>
     );
 };

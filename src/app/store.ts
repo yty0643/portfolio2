@@ -3,6 +3,7 @@ import scaleReducer from '../features/scale/scaleSlice';
 import coordReducer from '../features/coord/coordSlice';
 import nodesReducer from '../features/nodes/nodesSlice';
 import edgesReducer from '../features/edges/edgesSlice';
+import isLockReducer from '../features/isLock/isLockSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     coord: coordReducer,
     nodes: nodesReducer,
     edges: edgesReducer,
+    isLock: isLockReducer,
   },
 });
 
