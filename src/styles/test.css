@@ -24,10 +24,12 @@
     color: rgb(24, 209, 7);
     color: rgb(100, 100, 255);
     color: rgb(60, 118, 233);
+    color: rgb(200, 209, 223);
     color: initial;
     position: sticky;
     box-sizing: content-box;
     text-align: start;
     text-align: center;
     align-items: center;
+    transform: translateX(-50%);
 }

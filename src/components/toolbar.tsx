@@ -10,7 +10,7 @@ position: absolute;
 display: flex;
 flex-direction: column;
 width: 8rem;
-margin: 3rem;
+margin: 6rem 1rem 0 0;
 box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 background-color: translate;
 `
@@ -43,7 +43,7 @@ interface ITools{
 const Tools = styled.div<ITools>`
 overflow-y: scroll;
 overflow-x: visible;
-height: calc(100vh - 6rem - 6rem);
+height: calc(100vh - 6rem - 6rem - 3rem);
 ${({ isActive })=> !isActive && `height: 0rem;`}
 ::-webkit-scrollbar {
     width: 2px;

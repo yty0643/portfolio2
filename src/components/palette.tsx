@@ -44,7 +44,7 @@ const Palette = () => {
         const cx = cover.getBoundingClientRect().left;
         const cy = cover.getBoundingClientRect().top;
         const ex = (e.pageX - cx) * (1 / scale);
-        const ey = (e.pageY - cy) * (1 / scale);
+        const ey = (e.clientY - cy) * (1 / scale);
         dispatch(addNode({
             x: ex,
             y: ey,
