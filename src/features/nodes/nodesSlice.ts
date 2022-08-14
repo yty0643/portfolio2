@@ -13,11 +13,23 @@ interface INode{
     name: string,
 }
 
+interface ITempNode{
+    x: number,
+    y: number,
+    name: string,
+}
+
 export interface INodesState {
     list: INode[],
+    tempNode: ITempNode,
 };
 
 const initialState: INodesState = {
+    tempNode: {
+        x: 100,
+        y: 100,
+        name: "error",
+    },
     list: [
         {
             x: 100,
@@ -68,19 +80,26 @@ export const nodesSlice = createSlice({
                 opY: action.payload.opY,
             };
         },
-        addNode: (state) => {
-            // const temp = [...state.list];
-            // temp.push({
-            //     x: 0,
-            //     y: 0,
-            // });
-            // console.log(temp);
-            // state.list = temp;
+        addNode: (state, action) => {
+            state.list.push({
+                x: action.payload.x-80,
+                y: action.payload.y-24,
+                ipX: 0,
+                ipY: 0,
+                opX: 0,
+                opY: 0,
+                width: 160,
+                height: 48,
+                name: state.tempNode.name,
+            },)
+        },
+        setTempNode: (state, action) => { 
+            state.tempNode = action.payload;
         },
     }
 });
 
-export const { setNodes, addNode } = nodesSlice.actions;
+export const { setNodes, addNode, setTempNode } = nodesSlice.actions;
 export const selectNodes = (state: RootState) => state.nodes.list;
 
 export default nodesSlice.reducer;

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Tool from './tool';
 
-
-
 const Div = styled.div`
 z-index: 3;
 top: 0;

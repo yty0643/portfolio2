@@ -1,7 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useAppSelector } from '../app/hooks';
 import { selectX, selectY } from '../features/coord/coordSlice';
 import { selectScale } from '../features/scale/scaleSlice';
+
 
 const Pattern = ({ }) => {
     const x = useAppSelector(selectX);

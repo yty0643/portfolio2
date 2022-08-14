@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { RefObject, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { selectX, selectY } from '../features/coord/coordSlice';
@@ -27,7 +27,7 @@ width: 100%;
 height: 100%;
 `
 
-const Nodes = () => {
+const Nodes = ({ coverRef }:{coverRef:RefObject<HTMLDivElement>}) => {
     const dispatch = useAppDispatch();
     const x = useAppSelector(selectX);
     const y = useAppSelector(selectY);
@@ -60,7 +60,9 @@ const Nodes = () => {
     }, [stIdx, endIdx]);
 
     return (
-        <Div style={{ transform: `translate(${x}px, ${y}px) scale(${scale})` }}>
+        <Div
+            ref={coverRef}
+            style={{ transform: `translate(${x}px, ${y}px) scale(${scale})` }}>
             {nodes.map((node, index) =>
                 <Node
                     key={index}

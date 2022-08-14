@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
+import { useAppDispatch } from '../app/hooks';
+import { setTempNode } from '../features/nodes/nodesSlice';
 
 const Btn = styled.button`
-z-index: 1;
 background-color: white;
 text-align: start;
 width: 100%;
@@ -21,38 +22,20 @@ font-weight: 500;
 }
 `
 
-const Tool = ({ children }: { children: string }) => {
-    const [x, setX] = useState<number>(0);
-    const [y, setY] = useState<number>(0);
-    const ref = useRef<HTMLButtonElement>(null);
 
-    const onMouseDown = (event: React.MouseEvent) => {
-        event.stopPropagation();
-        const btn = ref.current!;
-        btn.style.position = "absolute";
-        const sx = event.pageX;
-        const sy = event.pageY;
-        const move = (e:MouseEvent) => {
-            const ex = x + (e.pageX - sx);
-            const ey = y + (e.pageY - sy);
-            setX(ex);
-            setY(ey);
-        };
-        window.addEventListener('mousemove', move);
-        window.onmouseup = () => {
-            window.removeEventListener('mousemove', move);
-            btn.style.position = "static";
-            setX(0);
-            setY(0);
-            window.onmouseup = null;
-        };
+const Tool = ({ children }: { children: string }) => {
+    const dispatch = useAppDispatch();
+
+    const onDragStart = (event: React.MouseEvent) => {
+        dispatch(setTempNode({
+            name: children,
+        }));
     };
     
     return (
-        <Btn ref={ref}
-            onMouseDown={onMouseDown} style={{
-                transform: `translate(${x}px, ${y}px)`
-            }}>
+        <Btn
+            draggable
+            onDragStart={onDragStart}>
             {children}
         </Btn>
     );

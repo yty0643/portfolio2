@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { selectX, selectY, setCoord } from '../features/coord/coordSlice';
+import { addNode } from '../features/nodes/nodesSlice';
+import { selectScale } from '../features/scale/scaleSlice';
 import Nodes from './nodes';
 import Pattern from './pattern';
 
@@ -17,7 +19,8 @@ const Palette = () => {
     const dispatch = useAppDispatch();
     const x = useAppSelector(selectX);
     const y = useAppSelector(selectY);
-    
+    const scale = useAppSelector(selectScale);
+    const coverRef = useRef<HTMLDivElement>(null);
     const onMouseDown = (e: React.MouseEvent) => {
         const sx = e.pageX;
         const sy = e.pageY;
@@ -36,11 +39,25 @@ const Palette = () => {
         };
     };
 
+    const onDrop = (e: React.MouseEvent) => {
+        const cover = coverRef.current!;
+        const cx = cover.getBoundingClientRect().left;
+        const cy = cover.getBoundingClientRect().top;
+        const ex = (e.pageX - cx) * (1 / scale);
+        const ey = (e.pageY - cy) * (1 / scale);
+        dispatch(addNode({
+            x: ex,
+            y: ey,
+        }));
+    }
+
     return (
         <Div
-            onMouseDown={onMouseDown}>
+            onMouseDown={onMouseDown}
+            onDrop={onDrop}
+            onDragOver={(e) => { e.preventDefault(); }}>
             <Pattern />
-            <Nodes />
+            <Nodes coverRef={coverRef} />
         </Div>
     );
 };
