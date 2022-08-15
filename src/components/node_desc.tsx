@@ -20,6 +20,7 @@ display: flex;
 align-items:center;
 width: 5rem;
 background-color: transparent;
+font-size: 0.8rem;
 font-weight: 700;
 color: rgb(29, 30, 33);
 opacity: 0.3;
@@ -32,7 +33,7 @@ interface IIcon{
 }
 const Icon = styled.div<IIcon>`
 margin-left: 5px;
-font-size: 2rem;
+font-size: 1.5rem;
 ${({ rotate }) => `
 transform: rotate(${rotate}deg);
 `}

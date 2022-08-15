@@ -52,7 +52,7 @@ const Navbar = () => {
             <Btns>
                 <NavBtn navRef={ref} index={0}>Intro</NavBtn>
                 <NavBtn navRef={ref} index={1}>Projects</NavBtn>
-                <NavBtn navRef={ref} index={2}>contact</NavBtn>
+                <NavBtn navRef={ref} index={2}>Contact</NavBtn>
             </Btns>
         </Nav>
     );

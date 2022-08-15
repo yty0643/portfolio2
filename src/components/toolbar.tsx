@@ -101,10 +101,14 @@ const Toolbar = () => {
             });
             return temp;
         });
+    }; 
+
+    const onWheel = (e: React.WheelEvent) => {
+        e.stopPropagation();
     };
 
     return (
-        <Div>
+        <Div onWheel={onWheel}>
             <Title>More tag</Title>
             <Btn onClick={() => { onClick(0) }}>Skill</Btn>
             <Tools isActive={activeArr[0]}>

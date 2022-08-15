@@ -47,9 +47,9 @@ const App = () => {
         isActive = null;
       }, 500);
     };
-    window.addEventListener('wheel', wheel, { passive: false });
+    document.addEventListener('wheel', wheel, { passive: false });
     return () => {
-      window.removeEventListener('wheel', wheel);
+      document.removeEventListener('wheel', wheel);
     }
   }, []);
 
