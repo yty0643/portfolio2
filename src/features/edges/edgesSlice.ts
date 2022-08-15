@@ -12,7 +12,7 @@ export interface IEdgesState {
 };
 
 const initialState: IEdgesState = {
-    list: [[0,1],[0,2],[0,3]],
+    list: [[0,1],[0,2],[0,3],[4,0]],
     tempEdge: null,
 };
 

@@ -35,4 +35,9 @@
     transform: translateX(-50%);
     visibility: visible;
     transform: rotate(100deg);
+    display:flex;
+flex-direction: column;
+width: 20%;
+height: 100%;
+background-color: rgb(230, 233, 238);
 }

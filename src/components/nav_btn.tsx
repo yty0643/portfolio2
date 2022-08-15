@@ -7,7 +7,7 @@ interface IBtn{
     focus: boolean,
 }
 const Btn = styled.button<IBtn>`
-font-size: 1rem;
+font-size: 1.2rem;
 font-weight: 500;
 padding: 2px 10px;
 color: rgb(39, 40, 43);

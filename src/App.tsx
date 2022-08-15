@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { selectFocus, setFocus } from './features/focus/focusSlice';
+import { setIsActive } from './features/isActive/isActiveSlice';
 import Intro from './sections/intro';
 import Navbar from './sections/navbar';
 import Outro from './sections/outro';
@@ -46,8 +47,10 @@ const App = () => {
       }, 500);
       if (e.deltaY < 0) {
         if (idx > 1) idx--;
+        dispatch(setIsActive(true));
       } else {
         if (idx < 3) idx++;
+        dispatch(setIsActive(false));
       }
       dispatch(setFocus(idx));
       div.children[idx].scrollIntoView({

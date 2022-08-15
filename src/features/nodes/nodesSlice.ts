@@ -77,6 +77,17 @@ const initialState: INodesState = {
             width: 160,
             height: 48,
             name: "Javascript",
+        },
+        {
+            x: 1350,
+            y: 256,
+            ipX: 0,
+            ipY: 0,
+            opX: 0,
+            opY: 0,
+            width: 160,
+            height: 48,
+            name: "Projects",
         }
     ],
 };
