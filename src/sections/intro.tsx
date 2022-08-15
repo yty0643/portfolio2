@@ -49,10 +49,6 @@ display: flex;
 flex-direction: column;
 width: 30%;
 transform: translateY(-50%);
--webkit-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
-user-select:none;
 `
 
 const Title = styled.p`

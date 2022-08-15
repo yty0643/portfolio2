@@ -14,11 +14,7 @@ flex-direction: column;
 width: 8rem;
 margin: 6rem 1rem 0 0;
 box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-background-color: translate;
--webkit-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
-user-select:none;
+background-color: translate
 `
 
 const Title = styled.p`

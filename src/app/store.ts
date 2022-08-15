@@ -4,6 +4,7 @@ import coordReducer from '../features/coord/coordSlice';
 import nodesReducer from '../features/nodes/nodesSlice';
 import edgesReducer from '../features/edges/edgesSlice';
 import isLockReducer from '../features/isLock/isLockSlice';
+import focusReducer from '../features/focus/focusSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     nodes: nodesReducer,
     edges: edgesReducer,
     isLock: isLockReducer,
+    focus: focusReducer,
   },
 });
 
