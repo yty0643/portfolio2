@@ -67,6 +67,7 @@ const Nodes = ({ coverRef }:{coverRef:RefObject<HTMLDivElement>}) => {
                 <Node
                     key={index}
                     index={index}
+                    img={node.img}
                     initX={node.x}
                     initY={node.y}
                     width={node.width}

@@ -30,8 +30,15 @@ line-height: 1rem;
 `
 
 const ContactBtn = () => {
+    const onClick = () => {
+        window.scrollTo({
+            behavior: 'smooth',
+            top: document.body.scrollHeight,
+        });
+    }
+
     return (
-        <Btn>
+        <Btn onClick={onClick}>
             <Icon>
                 <FontAwesomeIcon icon={faArrowLeftLong} />
             </Icon>

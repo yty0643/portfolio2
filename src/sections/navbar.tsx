@@ -23,6 +23,14 @@ box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0p
 transition: all ease-in 100ms;
 `
 
+const Logo = styled.p`
+font-weight: 500;
+`
+const Desc = styled.p`
+margin-top: 5px;
+font-size: 0.8rem;
+font-weight: 300;
+`
 const Btns = styled.div`
 display:flex;
 align-items: center;
@@ -37,10 +45,14 @@ const Navbar = () => {
             isActive={isActive}
             onMouseEnter={() => { setIsActive(true) }}
             onMouseLeave={() => { setIsActive(false) }}>
-            <p>Logo</p>
+            <Logo>
+                Yun Taeyoung
+                {isActive && <Desc>Portfolio</Desc>}
+            </Logo>
             <Btns>
                 <NavBtn navRef={ref} index={0}>Intro</NavBtn>
                 <NavBtn navRef={ref} index={1}>Projects</NavBtn>
+                <NavBtn navRef={ref} index={2}>contact</NavBtn>
             </Btns>
         </Nav>
     );

@@ -20,8 +20,15 @@ const Edges = () => {
     const edges = useAppSelector(selectEdges);
     const tempEdge = useAppSelector(selecTempEdge);
     const onClick = (index: number) => {
-        dispatch(popEdges(index));
+        const temp = [...edges].filter((value, idx) => {
+            return idx != index;
+        })
+        dispatch(popEdges(temp));
     };
+
+    useEffect(() => {
+        
+    }, [edges]);
 
     return (
         <Svg width="100%" height="100%">

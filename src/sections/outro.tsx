@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const Section = styled.section`
     width: 100%;
-    height 100vh;
+    height 30vh;
+    background-color: rgb(67, 77, 95);
 `
 const Outro = () => {
     return (

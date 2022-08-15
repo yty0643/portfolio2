@@ -24,7 +24,7 @@ export const edgesSlice = createSlice({
             state.list.push(action.payload);
         },
         popEdges: (state, action) => {
-            state.list.splice(action.payload.index, 1);
+            state.list = action.payload;
         },
         setTempEdge: (state, action) => {
             state.tempEdge = action.payload;

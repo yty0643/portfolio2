@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { setTempEdge } from '../features/edges/edgesSlice';
 import { setNodes } from '../features/nodes/nodesSlice';
 import { selectScale } from '../features/scale/scaleSlice';
+import NodeDesc from './node_desc';
 
 interface IDiv{
     width: number,
@@ -13,7 +14,6 @@ interface IDiv{
 const Div = styled.div<IDiv>`
 z-index: 1;
 position: absolute;
-overflow: hidden;
 top: 0;
 left: 0;
 display: flex;
@@ -35,15 +35,19 @@ box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0p
 user-select:none;
 `
 
+const Img = styled.img`
+width: 70%;
+height: 70%:
+`
+
 const InputEdge = styled.button`
 position: absolute;
 top: 50%;
 left: 0%;
-transform: translate(-50%, -50%);
-width: 1.2rem;
+transform: translate(0%, -50%);
+width: 0.7rem;
 height: 1rem;
-border-radius: 40%;
-
+border-radius: 0 10px 10px 0;
 background-color: rgb(181, 183, 189);
 cursor: crosshair;
 :hover{
@@ -53,11 +57,14 @@ cursor: crosshair;
 `
 const OutputEdge = styled(InputEdge)`
 left: 100%;
+border-radius: 10px 0 0 10px;
+transform: translate(-100%, -50%);
 `
 
 interface IProps{
     index: number,
     children: string,
+    img: string|undefined,
     initX: number,
     initY: number,
     width: number,
@@ -68,7 +75,7 @@ interface IProps{
     initEnd: () => void,
 };
 
-const Node = ({ index, children, initX, initY, width, height, edgeStart, edgeEnd, initStart, initEnd }: IProps) => {
+const Node = ({ index, children, img, initX, initY, width, height, edgeStart, edgeEnd, initStart, initEnd }: IProps) => {
     const dispatch = useAppDispatch();
     const scale = useAppSelector(selectScale);
     const [x, setX] = useState<number>(initX);
@@ -78,7 +85,7 @@ const Node = ({ index, children, initX, initY, width, height, edgeStart, edgeEnd
         event.stopPropagation();
         const sx = event.pageX;
         const sy = event.pageY;
-        const move = (e:MouseEvent) => {
+        const move = (e: MouseEvent) => {
             const ex = x + (e.pageX - sx) * (1 / scale);
             const ey = y + (e.pageY - sy) * (1 / scale);
             setX(ex);
@@ -110,7 +117,7 @@ const Node = ({ index, children, initX, initY, width, height, edgeStart, edgeEnd
             dispatch(setTempEdge({
                 ipX,
                 ipY,
-                opX, 
+                opX,
                 opY,
             }));
         }
@@ -122,7 +129,7 @@ const Node = ({ index, children, initX, initY, width, height, edgeStart, edgeEnd
         };
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         dispatch(setNodes({
             index,
             ipX: x,
@@ -130,7 +137,7 @@ const Node = ({ index, children, initX, initY, width, height, edgeStart, edgeEnd
             opX: x + width,
             opY: y + height / 2,
         }));
-    },[scale])
+    }, [scale])
 
     return (
         <Div
@@ -139,6 +146,8 @@ const Node = ({ index, children, initX, initY, width, height, edgeStart, edgeEnd
             onMouseDown={onMouseDown}
             style={{ transform: `translate(${x}px, ${y}px)` }}>
             {children}
+            {index == 1 &&  <NodeDesc />}
+            {img && <Img src={img} alt="" draggable={false} />}
             <InputEdge
                 onMouseDown={(e) => { edgeStart(e, index, 0); initEnd(); tempEdge(e, index, 0); }}
                 onMouseUp={(e) => edgeStart(e, index, 0)} />

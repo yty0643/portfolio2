@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import img from '../../img.jpg';
 
 interface INode{
+    img?: string,
     x: number,
     y: number,
     ipX: number,
@@ -32,8 +34,20 @@ const initialState: INodesState = {
     },
     list: [
         {
-            x: 100,
-            y: 100,
+            img: img,
+            x: 1050,
+            y: 170,
+            ipX: 0,
+            ipY: 0,
+            opX: 0,
+            opY: 0,
+            width: 220,
+            height: 220,
+            name: "",
+        },
+        {
+            x: 700,
+            y: 350,
             ipX: 0,
             ipY: 0,
             opX: 0,
@@ -43,8 +57,8 @@ const initialState: INodesState = {
             name: "React",
         },
         {
-            x: 200,
-            y: 200,
+            x: 830,
+            y: 500,
             ipX: 0,
             ipY: 0,
             opX: 0,
@@ -54,8 +68,8 @@ const initialState: INodesState = {
             name: "Typescript",
         },
         {
-            x: 300,
-            y: 300,
+            x: 1200,
+            y: 550,
             ipX: 0,
             ipY: 0,
             opX: 0,

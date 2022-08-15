@@ -1,9 +1,11 @@
+import { faReply } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Tool from './tool';
 
 const Div = styled.div`
-z-index: 3;
+z-index: 2;
 top: 0;
 right: 0;
 position: absolute;
@@ -13,6 +15,10 @@ width: 8rem;
 margin: 6rem 1rem 0 0;
 box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 background-color: translate;
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
 `
 
 const Title = styled.p`
@@ -61,6 +67,27 @@ background-color: white;
 transition: all ease-in 300ms;
 `
 
+const Desc = styled.div`
+position: absolute;
+bottom: 30%;
+left: -80%;
+display: flex;
+flex-direction: column;
+align-items:center;
+width: 5rem;
+background-color: transparent;
+font-weight: 700;
+color: rgb(29, 30, 33);
+transform: rotate(-10deg);
+opacity: 0.3;
+`
+
+const Icon = styled.div`
+margin-left: 5px;
+font-size: 2rem;
+transform: rotate(170deg);
+`
+
 const Toolbar = () => {
     const [activeArr, setActiveArr] = useState<boolean[]>([false,false,false]);
 
@@ -100,6 +127,13 @@ const Toolbar = () => {
                 <Tool>AWS-Amplify</Tool>
                 <Tool>Firebase</Tool>
             </Tools>
+
+            <Desc>
+                Click and Open / Drag and Drop
+                <Icon>
+                    <FontAwesomeIcon icon={faReply} />
+                </Icon>
+            </Desc>
         </Div>
     );
 };

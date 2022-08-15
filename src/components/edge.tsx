@@ -34,7 +34,7 @@ const Edge = ({ sx, sy, x1, y1, x2, y2, ex, ey, temp, onClick }: IProps) => {
 
     return (
         <Path d={`M${sx} ${sy} C${x1} ${y1} ${x2} ${y2} ${ex} ${ey}`}
-            stroke={temp ? "grey" : "blue"}
+            stroke={temp ? "grey" : "rgb(60, 118, 233)"}
             strokeWidth="3"
             fill="none"
             markerEnd='url(#)'

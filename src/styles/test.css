@@ -23,7 +23,7 @@
     color: rgb(239, 100, 255);
     color: rgb(24, 209, 7);
     color: rgb(100, 100, 255);
-    color: rgb(60, 118, 233);
+    color: rgb(67, 77, 95);
     color: rgb(200, 209, 223);
     color: initial;
     position: sticky;
@@ -32,4 +32,6 @@
     text-align: center;
     align-items: center;
     transform: translateX(-50%);
+    visibility: visible;
+    transform: rotate(100deg);
 }
