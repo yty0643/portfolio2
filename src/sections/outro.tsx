@@ -5,7 +5,7 @@ const Section = styled.section`
     width: 100%;
     height 100vh;
 `
-const Projects = () => {
+const Outro = () => {
     return (
         <Section>
             
@@ -13,4 +13,4 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+export default Outro;

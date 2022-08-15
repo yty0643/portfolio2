@@ -56,16 +56,28 @@ user-select:none;
 `
 
 const Title = styled.p`
+margin-bottom: 1.5rem;
 font-size: 3rem;
 font-weight: 700;
 color: rgb(16, 16, 17);
+@media screen and (max-width: 1000px) {
+    font-size: 2rem;
+    font-weight: 500;
+}
 `
 
 const SubTitle = styled.p`
-margin: 1.5rem 0;
+margin-bottom: 1.5rem;
 font-size: 1rem;
-font-weight: 500;
-color: rgb(56, 56, 67);
+font-weight: 700;
+color: rgb(116, 119, 130);
+@media screen and (max-width: 1000px) {
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+@media screen and (max-height: 500px) {
+    display: none;
+}
 `
 const Btns = styled.div`
 display: flex;
