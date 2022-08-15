@@ -12,7 +12,7 @@
     color: rgb(181, 183, 189);
     stroke-dasharray: 1360;
     animation: dash 2s linear infinite;
-    color: rgb(116, 119, 130);
+    color: rgb(157, 161, 173);
     color: rgb(230, 233, 238);
     color: rgb(214, 216, 221);
     color: rgb(16, 16, 17);
@@ -24,7 +24,8 @@
     color: rgb(24, 209, 7);
     color: rgb(100, 100, 255);
     color: rgb(67, 77, 95);
-    color: rgb(200, 209, 223);
+    transform: rotateY(360deg);
+    color: rgb(200, 209, 223);background-color: rgb(91, 91, 124);
     color: initial;
     position: sticky;
     box-sizing: content-box;

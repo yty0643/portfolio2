@@ -22,11 +22,15 @@ background-color: transparent;
 }
 & + &{
     margin-left: 3rem;
+    @media screen and (max-height: 600px) {
+        margin-left: 1rem;
+    }
 }
 ${({ focus }) => focus && `
 color: white;
 background-color: rgb(60, 118, 233);
 `}
+
 `
 
 const NavBtn = ({ navRef, index, children }: { navRef: RefObject<HTMLElement>, index: number, children: string }) => {

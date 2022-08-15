@@ -25,6 +25,9 @@ transition: all ease-in 100ms;
 
 const Logo = styled.div`
 font-weight: 500;
+@media screen and (max-width: 700px) {
+    font-size: 0.8rem;
+}
 `
 const Desc = styled.p`
 margin-top: 5px;
