@@ -40,7 +40,7 @@ const NavBtn = ({ navRef, index, children }: { navRef: RefObject<HTMLElement>, i
     const onClick = (e: React.MouseEvent ) => {
         dispatch(setFocus(index));
         let nav: Element = navRef.current!;
-        let i = index;
+        let i = index + 1;
         while (i--) {
             nav = nav.nextSibling as Element;
         }

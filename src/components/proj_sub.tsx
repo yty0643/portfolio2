@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ProjPreview from './proj_preview';
 
 interface IDiv{
+    reverse?: boolean,
     isActive: boolean,
 }
 const Div = styled.div<IDiv>`
@@ -11,7 +12,9 @@ display: flex;
 flex-direction: column;
 height: 100%;
 padding: 3rem 0;
-${({ isActive }) => isActive ?
+${({ isActive, reverse }) => {
+    const x = reverse ? -10 : 10;
+    return isActive ?
     `
     opacity: 1;
     transform: translateX(0rem);
@@ -19,9 +22,10 @@ ${({ isActive }) => isActive ?
     :
     `
     opacity: 0;
-    transform: translateX(10rem);
+    transform: translateX(${x}rem);
     `
 }
+}}
 transition: all ease-in 800ms;
 ::-webkit-scrollbar {
     width: 5px;
@@ -35,9 +39,11 @@ transition: all ease-in 800ms;
 }
 `
 
-const ProjSub = ({ isActive, titles, images }: { isActive: boolean, titles: string[], images: string[] }) => {
+const ProjSub = ({ reverse, isActive, titles, images }: { reverse?: boolean, isActive: boolean, titles: string[], images: string[] }) => {
     return (
-        <Div isActive={isActive}>
+        <Div
+            reverse={reverse}
+            isActive={isActive}>
             {titles.map((title, index) =>
                 <ProjPreview
                     key={index}
