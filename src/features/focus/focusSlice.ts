@@ -6,7 +6,7 @@ export interface IFocusState {
 };
 
 const initialState: IFocusState = {
-    index: 1,
+    index: 0,
 };
 
 export const focusSlice = createSlice({

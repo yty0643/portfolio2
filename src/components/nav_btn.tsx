@@ -10,7 +10,7 @@ const Btn = styled.button<IBtn>`
 font-size: 1.2rem;
 font-weight: 500;
 padding: 2px 10px;
-color: rgb(39, 40, 43);
+color: rgb(24, 24, 27);
 border-radius: 2rem;
 background-color: transparent;
 :hover{
@@ -38,9 +38,9 @@ const NavBtn = ({ navRef, index, children }: { navRef: RefObject<HTMLElement>, i
     const focus = useAppSelector(selectFocus);
 
     const onClick = (e: React.MouseEvent ) => {
-        dispatch(setFocus(index + 1));
+        dispatch(setFocus(index));
         let nav: Element = navRef.current!;
-        let i = index + 1;
+        let i = index;
         while (i--) {
             nav = nav.nextSibling as Element;
         }
@@ -50,7 +50,7 @@ const NavBtn = ({ navRef, index, children }: { navRef: RefObject<HTMLElement>, i
     }
 
     return (
-        <Btn focus={index + 1 == focus}
+        <Btn focus={index == focus}
             onClick={onClick}>
             {children}
         </Btn>

@@ -2,11 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { selectFocus, setFocus } from './features/focus/focusSlice';
-import { setIsActive } from './features/isActive/isActiveSlice';
 import Intro from './sections/intro';
 import Navbar from './sections/navbar';
 import Outro from './sections/outro';
-import Projects from './sections/projects';
+import Showcase from './sections/showcase';
 import { GlobalStyle } from './styles/global';
 import { theme } from './styles/theme';
 
@@ -22,21 +21,35 @@ const App = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const div = ref.current!;
-    let cmpY = -10;
-    for (let i = 1; i < 4; i++) {
-      const height = div.children[i].scrollHeight;
-      const y = window.scrollY;
-      if (y >= cmpY && y <= cmpY + height) {
-        dispatch(setFocus(i));
-        break;
-      }
-      cmpY += height;
-    };
+    const secCnt = 3;
+    const sections = ref.current!.children;
+    const observer = new IntersectionObserver((ev) => {
+      let isfined = false;
+      ev.forEach((e: IntersectionObserverEntry, index) => {
+        if (e.isIntersecting) {
+          for (let i = 0; i < secCnt; i++){
+            if (e.target == sections[i + 1]) {
+              dispatch(setFocus(i));
+              isfined = true;
+            }
+          }
+        }
+      });
+      if (!isfined) dispatch(setFocus(1)); // projects Section
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1,
+    });
+
+    for (let i = 0; i < secCnt; i++) {
+      if (i == 1) continue; // projects Section
+      observer.observe(sections[i+1]);
+    }   
   }, []);
 
   useEffect(() => {
-    const div = ref.current!;
+    const sections = ref.current!.children;
     let isActive: (NodeJS.Timeout | null) = null;
     let idx = focus;
     const wheel = (e: WheelEvent) => {
@@ -46,20 +59,20 @@ const App = () => {
         isActive = null;
       }, 500);
       if (e.deltaY < 0) {
-        if (idx > 1) idx--;
-        dispatch(setIsActive(true));
+        if (idx > 0) idx--;
       } else {
-        if (idx < 3) idx++;
-        dispatch(setIsActive(false));
+        if (idx < 2) idx++;
       }
       dispatch(setFocus(idx));
-      div.children[idx].scrollIntoView({
+      sections[idx + 1].scrollIntoView({
         behavior: 'smooth'
       });
     };
-    document.addEventListener('wheel', wheel, { passive: false });
+    if (focus != 1) {
+      window.addEventListener('wheel', wheel, { passive: false });
+    }
     return () => {
-      document.removeEventListener('wheel', wheel);
+      window.removeEventListener('wheel', wheel);
     }
   }, [focus]);
 
@@ -69,7 +82,7 @@ const App = () => {
       <Div ref={ref}>
         <Navbar />
         <Intro />
-        <Projects />
+        <Showcase />
         <Outro />
       </Div>
     </ThemeProvider>

@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useAppSelector } from '../app/hooks';
 import NavBtn from '../components/nav_btn';
-import { selectFocus } from '../features/focus/focusSlice';
 import { selectIsActive } from '../features/isActive/isActiveSlice';
 
 
@@ -29,8 +27,8 @@ transition: all ease-in 100ms;
 `
 
 const Logo = styled.div`
+color: rgb(24, 24, 27);
 font-weight: 500;
-font-size: 0.8rem;
 @media screen and (max-width: 700px) {
     font-size: 0.8rem;
 }
@@ -47,8 +45,19 @@ align-items: center;
 
 const Navbar = () => {
     const ref = useRef<HTMLElement>(null);
-    const isActive = useAppSelector(selectIsActive);
+    const [isActive, setIsActive] = useState<boolean>(true);
     
+    useEffect(() => {
+        const wheel = (e: WheelEvent) => {
+            if (e.deltaY < 0) setIsActive(true);
+            else setIsActive(false);
+        };
+        window.addEventListener('wheel', wheel);
+        return () => {
+            window.removeEventListener('wheel', wheel);
+        }
+    }, []);
+
     return (
         <Nav
             ref={ref}

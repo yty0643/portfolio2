@@ -55,7 +55,7 @@ const Title = styled.p`
 margin-bottom: 1.5rem;
 font-size: 3rem;
 font-weight: 700;
-color: rgb(16, 16, 17);
+color: rgb(24, 24, 27);
 @media screen and (max-width: 1000px) {
     font-size: 2rem;
     font-weight: 500;
