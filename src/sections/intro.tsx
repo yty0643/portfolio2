@@ -8,12 +8,24 @@ import ZoomBtn from '../components/zoom_btn';
 import { selectIsLock } from '../features/isLock/isLockSlice';
 import DocBtn from '../components/doc_btn';
 import ContactBtn from '../components/contact_btn';
+import { selectTheme } from '../features/theme/themeSlice';
 
-const Section = styled.section`
+interface ISection{
+    isLight: boolean,
+}
+const Section = styled.section<ISection>`
 position: relative;
 display: flex;
 width: 100%;
 height: 100vh;
+${({ theme, isLight }) => {
+    const color = isLight ? "light" : "dark";
+    return `
+    background-color: ${theme[color].bgColor};
+    color: ${theme[color].color};
+    `
+}}
+transition: all ease-in 100ms;
 `
 
 const BtnBox = styled.div`
@@ -55,7 +67,6 @@ const Title = styled.p`
 margin-bottom: 1.5rem;
 font-size: 3rem;
 font-weight: 700;
-color: rgb(24, 24, 27);
 @media screen and (max-width: 1000px) {
     font-size: 2rem;
     font-weight: 500;
@@ -82,9 +93,10 @@ margin-left: auto;
 `
 
 const Intro = () => {
+    const theme = useAppSelector(selectTheme);
     const isLock = useAppSelector(selectIsLock);
     return (
-        <Section>
+        <Section isLight={theme}>
             <Box>
                 <Title>
                     안녕하세요.<br/>

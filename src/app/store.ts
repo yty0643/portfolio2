@@ -6,6 +6,7 @@ import edgesReducer from '../features/edges/edgesSlice';
 import isLockReducer from '../features/isLock/isLockSlice';
 import focusReducer from '../features/focus/focusSlice';
 import isActiveReducer from '../features/isActive/isActiveSlice';
+import themeReducer from '../features/theme/themeSlice';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     isLock: isLockReducer,
     focus: focusReducer,
     isActive: isActiveReducer,
+    theme: themeReducer,
   },
 });
 

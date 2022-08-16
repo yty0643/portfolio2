@@ -1,15 +1,17 @@
-import { lighten } from 'polished';
+import { darken, lighten } from 'polished';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { setTempEdge } from '../features/edges/edgesSlice';
 import { setNodes } from '../features/nodes/nodesSlice';
 import { selectScale } from '../features/scale/scaleSlice';
+import { selectTheme } from '../features/theme/themeSlice';
 import NodeDesc from './node_desc';
 
 interface IDiv{
     width: number,
     height: number,
+    isLight: boolean,
 }
 const Div = styled.div<IDiv>`
 z-index: 1;
@@ -26,8 +28,19 @@ ${({ width, height }) => `
     height: ${height}px;
 `}
 border-radius: 5px;
-background-color: white;
-color: rgb(24, 24, 27);
+
+${({ theme, isLight }) => {
+    const color = isLight ? "light" : "dark";
+    const css = isLight ?
+        `:hover{background-color: ${darken(0.1, `${theme[color].bgColor}`)};}`
+        :
+        `:hover{background-color: ${lighten(0.1, `${theme[color].bgColor}`)};}`
+    return css + 
+        `
+        background-color: ${lighten(0.05, `${theme[color].bgColor}`)};
+        color: ${theme[color].color};
+        `
+}}
 box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 `
 
@@ -73,6 +86,7 @@ interface IProps{
 
 const Node = ({ index, children, img, initX, initY, width, height, edgeStart, edgeEnd, initStart, initEnd }: IProps) => {
     const dispatch = useAppDispatch();
+    const theme = useAppSelector(selectTheme);
     const scale = useAppSelector(selectScale);
     const [x, setX] = useState<number>(initX);
     const [y, setY] = useState<number>(initY);
@@ -137,6 +151,7 @@ const Node = ({ index, children, img, initX, initY, width, height, edgeStart, ed
 
     return (
         <Div
+            isLight={theme}
             width={width}
             height={height}
             onMouseDown={onMouseDown}

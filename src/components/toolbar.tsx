@@ -2,6 +2,8 @@ import { faReply } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useAppSelector } from '../app/hooks';
+import { selectTheme } from '../features/theme/themeSlice';
 import Tool from './tool';
 
 const Div = styled.div`
@@ -29,41 +31,52 @@ font-weight: 300;
 color: white;
 background-color: rgb(60, 118, 233);
 `
-
-const Btn = styled.button`
+interface IBtn{
+    isLight: boolean,
+}
+const Btn = styled.button<IBtn>`
 flex: 0 0 auto;
 width: 8rem;
 height: 2rem;
 color: rgb(60, 118, 233);
 border: 1px solid rgb(60, 118, 233);
 background-color: white;
+${({ theme, isLight }) => {
+    const color = isLight ? "light" : "dark";
+    return `
+    background-color: ${theme[color].bgColor};
+    color: ${theme[color].color};
+    `
+}}
 `
 
 interface ITools{
     isActive: boolean,
 }
-
 const Tools = styled.div<ITools>`
 overflow-y: scroll;
 overflow-x: visible;
 height: calc(100vh - 6rem - 6rem - 3rem);
 max-height: 10rem;
 ${({ isActive })=> !isActive && `height: 0rem;`}
+transition: all ease-in 300ms;
+
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 8px;
 }
 ::-webkit-scrollbar-thumb {
     background-color: rgb(150,150,150);
-    border-radius: 2px;
+    border-radius: 8px;
 }
 ::-webkit-scrollbar-track {
     background-color: translate;
 }
-background-color: white;
-transition: all ease-in 300ms;
 `
 
-const Desc = styled.div`
+interface IDesc{
+    isLight: boolean,
+}
+const Desc = styled.div<IDesc>`
 position: absolute;
 bottom: 30%;
 left: -80%;
@@ -73,9 +86,15 @@ align-items:center;
 width: 5rem;
 background-color: transparent;
 font-weight: 700;
-color: rgb(29, 30, 33);
 transform: rotate(-10deg);
 opacity: 0.3;
+${({ theme, isLight }) => {
+    const color = isLight ? "light" : "dark";
+    return `
+    color: ${theme[color].color};
+    
+    `
+}}
 `
 
 const Icon = styled.div`
@@ -85,6 +104,7 @@ transform: rotate(170deg);
 `
 
 const Toolbar = () => {
+    const theme = useAppSelector(selectTheme);
     const [activeArr, setActiveArr] = useState<boolean[]>([false,false,false]);
 
     const onClick = (index: number) => {
@@ -106,14 +126,14 @@ const Toolbar = () => {
     return (
         <Div onWheel={onWheel}>
             <Title>More tag</Title>
-            <Btn onClick={() => { onClick(0) }}>Skill</Btn>
+            <Btn isLight={theme} onClick={() => { onClick(0) }}>Skill</Btn>
             <Tools isActive={activeArr[0]}>
                 <Tool>C++</Tool>
                 <Tool>CSS</Tool>
                 <Tool>HTML</Tool>
                 <Tool>Git</Tool>
             </Tools>
-            <Btn onClick={() => { onClick(1) }}>Library</Btn>
+            <Btn isLight={theme} onClick={() => { onClick(1) }}>Library</Btn>
             <Tools isActive={activeArr[1]}>
                 <Tool>VAC-Pattern</Tool>
                 <Tool>styled-component</Tool>
@@ -122,13 +142,13 @@ const Toolbar = () => {
                 <Tool>REST API</Tool>
                 <Tool>Axios</Tool>
             </Tools>
-            <Btn onClick={() => { onClick(2) }}>Cloud</Btn>
+            <Btn isLight={theme} onClick={() => { onClick(2) }}>Cloud</Btn>
             <Tools isActive={activeArr[2]}>
                 <Tool>AWS-Amplify</Tool>
                 <Tool>Firebase</Tool>
             </Tools>
 
-            <Desc>
+            <Desc isLight={theme}>
                 Click and Open / Drag and Drop
                 <Icon>
                     <FontAwesomeIcon icon={faReply} />

@@ -13,7 +13,7 @@ flex-direction: column;
 height: 100%;
 padding: 3rem 0;
 ${({ isActive, reverse }) => {
-    const x = reverse ? -10 : 10;
+    const x = reverse ? -5 : 5;
     return isActive ?
     `
     opacity: 1;

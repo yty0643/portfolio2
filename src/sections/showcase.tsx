@@ -4,6 +4,7 @@ import { useAppSelector } from '../app/hooks';
 import ProjMain from '../components/proj_main';
 import ProjSub from '../components/proj_sub';
 import { selectFocus } from '../features/focus/focusSlice';
+import { selectTheme } from '../features/theme/themeSlice';
 import img1 from '../images/project1/img1.png';
 import img2 from '../images/project1/img2.png';
 import img3 from '../images/project1/img3.png';
@@ -22,14 +23,23 @@ import img33 from '../images/project3/img3.png';
 import img34 from '../images/project3/img4.png';
 
 
-
-const Section = styled.section`
+interface ISection{
+    isLight: boolean,
+}
+const Section = styled.section<ISection>`
 position: relative;
 display: flex;
 flex-direction: column;
 width: 100%;
 padding: 0rem 10%;
-background-color: rgb(230, 233, 238);
+${({ theme, isLight }) => {
+    const color = isLight ? "light" : "dark";
+    return `
+    background-color: ${theme[color].bgColor2};
+    
+    `
+}}
+transition: all ease-in 100ms;
 `
 const Box = styled.div`
 position: relative;
@@ -37,8 +47,9 @@ display: flex;
 `
 
 const Showcase = () => {
-    const ref = useRef<HTMLElement>(null);
+    const theme = useAppSelector(selectTheme);
     const focus = useAppSelector(selectFocus);
+    const ref = useRef<HTMLElement>(null);
     const images = [img1, img2, img3, img4, img5, img6, img1];
     const titles = [
         "Redux, RTK를 활용한 상태 관리",
@@ -68,82 +79,28 @@ const Showcase = () => {
     ];
 
     const tags = [
-        {
-            title: "React",
-            color: "rgb(99, 221, 255)",
-        },
-        {
-            title: "Typescript",
-            color: "rgb(72, 136, 225)",
-        },
-        {
-            title: "Redux",
-            color: "rgb(120, 79, 123)",
-        },
-        {
-            title: "Axios",
-            color: "rgb(81, 78, 131)",
-        },
-        {
-            title: "AWS-Amplify",
-            color: "rgb(233, 145, 21)",
-        },
-        {
-            title: "REST API",
-            color: "rgb(96, 174, 63)",
-        },
-        {
-            title: "GitHub",
-            color: "rgb(8, 29, 74)",
-        },
+        "React",
+        "Typescript",
+        "Redux",
+        "Axios",
+        "AWS-Amplify",
+        "REST API",
+        "GitHub",
     ];
     const tags2 = [
-        {
-            title: "React",
-            color: "rgb(99, 221, 255)",
-        },
-        {
-            title: "Typescript",
-            color: "rgb(72, 136, 225)",
-        },
-        {
-            title: "Firebase",
-            color: "rgb(246, 198, 24)",
-        },
-        {
-            title: "GitHub",
-            color: "rgb(8, 29, 74)",
-        },
-        {
-            title: "VAC Pattern",
-            color: "rgb(76, 84, 87)",
-        },
-        {
-            title: "REST API",
-            color: "rgb(96, 174, 63)",
-        }
+        "React",
+        "Typescript",
+        "Firebase",
+        "GitHub",
+        "VAC Pattern",
+        "REST API"
     ];
     const tags3 = [
-        {
-            title: "React",
-            color: "rgb(99, 221, 255)",
-        },
-        {
-            title: "Javascript",
-            color: "rgb(247, 223, 43)",
-        },
-        {
-            title: "Firebase",
-            color: "rgb(246, 198, 24)",
-        },
-        {
-            title: "GitHub",
-            color: "rgb(8, 29, 74)",
-        },
-        {
-            title: "REST API",
-            color: "rgb(96, 174, 63)",
-        }
+        "React",
+        "Javascript",
+        "Firebase",
+        "GitHub",
+        "REST API"
     ];
     
     useEffect(() => {
@@ -161,6 +118,7 @@ const Showcase = () => {
 
     return (
         <Section
+            isLight={theme}
             ref={ref}>
             <Box>
                 <ProjMain isActive={focus == 1} image={images[0]} tags={tags} />

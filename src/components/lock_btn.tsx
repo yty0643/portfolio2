@@ -4,13 +4,24 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { selectIsLock, toggleLock } from '../features/isLock/isLockSlice';
+import { selectTheme } from '../features/theme/themeSlice';
 
-const Btn = styled.button`
+interface IBtn{
+    isLight: boolean,
+}
+const Btn = styled.button<IBtn>`
 width: 2rem;
 height: 2rem;
 background-color: white;
 border-bottom: 1px solid rgb(214, 216, 221);
 font-size: 1rem;
+${({ theme, isLight }) => {
+    const color = isLight ? "light" : "dark";
+    return `
+    color: ${theme[color].color};
+    background-color: ${theme[color].bgColor};
+    `
+}}
 :hover{
     background-color: rgb(214, 216, 221);
 }
@@ -18,6 +29,7 @@ font-size: 1rem;
 
 const LockBtn = () => {
     const dispatch = useAppDispatch();
+    const theme = useAppSelector(selectTheme);
     const isLock = useAppSelector(selectIsLock);
 
     const onClick = () => {
@@ -25,7 +37,7 @@ const LockBtn = () => {
     };
 
     return (
-        <Btn onClick={onClick}>
+        <Btn isLight={theme} onClick={onClick}>
             {isLock ? <FontAwesomeIcon icon={faLock} /> : <FontAwesomeIcon icon={faUnlock} />}
         </Btn>
     );

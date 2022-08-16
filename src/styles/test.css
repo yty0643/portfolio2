@@ -25,7 +25,8 @@
     color: rgb(100, 100, 255);
     color: rgb(67, 77, 95);
     transform: rotateY(360deg);
-    color: rgb(200, 209, 223);background-color: rgb(91, 91, 124);
+    color: rgb(200, 209, 223);
+    background-color: rgb(91, 91, 124);
     color: initial;
     position: sticky;
     box-sizing: content-box;
@@ -36,10 +37,8 @@
     visibility: visible;
     transform: rotate(100deg);
     display:flex;
-flex-direction: column;
-width: 20%;
-height: 100%;
-background-color: rgb(24, 24, 27);
-overflow: visible;
-
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    background-color: rgb(255, 222, 37);
 }
