@@ -97,32 +97,32 @@ const Intro = () => {
     const isLock = useAppSelector(selectIsLock);
     const ref = useRef<HTMLElement>(null);
 
-    useEffect(() => {
-        const intro = ref.current!;
-        const next = intro.nextSibling! as Element;
-        let isActive: (NodeJS.Timeout | null) = null;
+    // useEffect(() => {
+    //     const intro = ref.current!;
+    //     const next = intro.nextSibling! as Element;
+    //     let isActive: (NodeJS.Timeout | null) = null;
     
-        const wheel = (e: WheelEvent) => {
-            e.preventDefault();
-            if (isActive) return;
-            isActive = setTimeout(() => {
-                isActive = null;
-            }, 1000);
-            if (e.deltaY < 0) {
-                intro.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            } else {
-                next.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        };
-        intro.addEventListener('wheel', wheel, { passive: false });
-        return () => {
-            intro.removeEventListener('wheel', wheel);
-        }
-    }, []);
+    //     const wheel = (e: WheelEvent) => {
+    //         e.preventDefault();
+    //         if (isActive) return;
+    //         isActive = setTimeout(() => {
+    //             isActive = null;
+    //         }, 1000);
+    //         if (e.deltaY < 0) {
+    //             intro.scrollIntoView({
+    //                 behavior: 'smooth'
+    //             });
+    //         } else {
+    //             next.scrollIntoView({
+    //                 behavior: 'smooth'
+    //             });
+    //         }
+    //     };
+    //     intro.addEventListener('wheel', wheel, { passive: false });
+    //     return () => {
+    //         intro.removeEventListener('wheel', wheel);
+    //     }
+    // }, []);
     
     return (
         <Section
@@ -136,7 +136,6 @@ const Intro = () => {
                 <SubTitle>
                     주로 사용하는 기술 스택은 Typescript, Javascript, React 입니다.
                     대학을 통해 다양한 언어를 경험 했고, C++을 통해 알고리즘을 공부하고 있습니다.
-                    이외에도 실무에서 주로사용하는 라이브러리, 프레임워크 위주로 꾸준히 공부하고 있습니다.
                 </SubTitle>
                 <Btns>
                     <ContactBtn />

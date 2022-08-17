@@ -82,9 +82,9 @@ const Navbar = () => {
             </Logo>
             <Btns>
                 <NavBtn onClick={() => { onClick(0) }} index={0}>Introduction</NavBtn>
-                <NavBtn onClick={() => { onClick(0) }} index={1}>Skills</NavBtn>
-                <NavBtn onClick={() => { onClick(1) }} index={2}>Projects</NavBtn>
-                <NavBtn onClick={() => { onClick(2) }} index={3}>Contact</NavBtn>
+                <NavBtn onClick={() => { onClick(1) }} index={1}>Skills</NavBtn>
+                <NavBtn onClick={() => { onClick(2) }} index={2}>Projects</NavBtn>
+                <NavBtn onClick={() => { onClick(3) }} index={3}>Contact</NavBtn>
             </Btns>
             <Btns>
                 <ThemeToggle />

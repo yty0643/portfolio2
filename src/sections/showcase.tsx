@@ -108,16 +108,16 @@ const Showcase = () => {
             isLight={theme}
             ref={ref}>
             <Box>
-                <ProjMain isActive={focus == 1} image={images[0]} tags={tags} />
-                <ProjSub isActive={focus == 1} titles={titles} images={images} />
+                <ProjMain isActive={focus == 2} image={images[0]} tags={tags} />
+                <ProjSub isActive={focus == 2} titles={titles} images={images} />
             </Box>
             <Box>
-                <ProjSub reverse isActive={focus == 1} titles={titles2} images={images2} />
-                <ProjMain reverse isActive={focus == 1} image={images[0]} tags={tags2} />
+                <ProjSub reverse isActive={focus == 2} titles={titles2} images={images2} />
+                <ProjMain reverse isActive={focus == 2} image={images[0]} tags={tags2} />
             </Box>
             <Box>
-                <ProjMain isActive={focus == 1} image={images[0]} tags={tags3} />
-                <ProjSub isActive={focus == 1} titles={titles3} images={images3} />
+                <ProjMain isActive={focus == 2} image={images[0]} tags={tags3} />
+                <ProjSub isActive={focus == 2} titles={titles3} images={images3} />
             </Box>
         </Section>
     );

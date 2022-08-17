@@ -41,9 +41,13 @@
     width: 20%;
     height: 100%;
     background-color: rgb(255, 255, 255);
-    background-color: rgb(232, 243, 255);
+    background-color: rgb(238, 241, 245);
     background-color: rgb(213, 221, 230);
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(35, 36, 37);
     transform: rotateZ(50deg);
     transform: translateX(-10px);
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    
 }
