@@ -42,22 +42,22 @@ background-color: rgb(60, 118, 233);
 
 `
 
-const NavBtn = ({ navRef, index, children }: { navRef: RefObject<HTMLElement>, index: number, children: string }) => {
+const NavBtn = ({ index, onClick, children }: { index: number, onClick: () => void, children: string }) => {
     const dispatch = useAppDispatch();
     const focus = useAppSelector(selectFocus);
     const theme = useAppSelector(selectTheme);
     
-    const onClick = (e: React.MouseEvent ) => {
-        dispatch(setFocus(index));
-        let nav: Element = navRef.current!;
-        let i = index + 1;
-        while (i--) {
-            nav = nav.nextSibling as Element;
-        }
-        nav.scrollIntoView({
-            behavior: 'smooth',
-        })
-    }
+    // const onClick = (e: React.MouseEvent) => {
+    //     dispatch(setFocus(index));
+    //     let nav: Element = navRef.current!;
+    //     let i = index + 1;
+    //     while (i--) {
+    //         nav = nav.nextSibling as Element;
+    //     }
+    //     nav.scrollIntoView({
+    //         behavior: 'smooth',
+    //     })
+    // }
 
     return (
         <Btn isLight={theme} focus={index == focus}

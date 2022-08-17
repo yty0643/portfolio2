@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { useAppSelector } from '../app/hooks';
 import ProjMain from '../components/proj_main';
@@ -102,19 +102,6 @@ const Showcase = () => {
         "GitHub",
         "REST API"
     ];
-    
-    useEffect(() => {
-        // const wheel = (e: WheelEvent) => {
-        //     const sec = ref.current!;
-        //     const y = sec.getBoundingClientRect().y;
-        //     if (y >= 0)
-        //         e.stopPropagation();
-        // };
-        // document.addEventListener('wheel', wheel);
-        // return () => {
-        //     document.removeEventListener('wheel', wheel);
-        // }
-    }, []);
 
     return (
         <Section

@@ -54,6 +54,13 @@ const Navbar = () => {
     const ref = useRef<HTMLElement>(null);
     const [isActive, setIsActive] = useState<boolean>(true);
     
+    const onClick = (index: number) => {
+        const sections = ref.current!.parentNode!.children;
+        sections[index + 1].scrollIntoView({
+            behavior: 'smooth'
+          });
+    }
+
     useEffect(() => {
         const wheel = (e: WheelEvent) => {
             if (e.deltaY < 0) setIsActive(true);
@@ -74,9 +81,9 @@ const Navbar = () => {
                 Yun Taeyoung
             </Logo>
             <Btns>
-                <NavBtn navRef={ref} index={0}>Intro</NavBtn>
-                <NavBtn navRef={ref} index={1}>Projects</NavBtn>
-                <NavBtn navRef={ref} index={2}>Contact</NavBtn>
+                <NavBtn onClick={() => { onClick(0) }} index={0}>Intro</NavBtn>
+                <NavBtn onClick={() => { onClick(1) }} index={1}>Projects</NavBtn>
+                <NavBtn onClick={() => { onClick(2) }} index={2}>Contact</NavBtn>
             </Btns>
             <Btns>
                 <ThemeToggle />

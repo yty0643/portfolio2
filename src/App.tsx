@@ -39,42 +39,14 @@ const App = () => {
     }, {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1,
+      threshold: 0.5,
     });
 
     for (let i = 0; i < secCnt; i++) {
       if (i == 1) continue; // projects Section
-      observer.observe(sections[i+1]);
+      observer.observe(sections[i + 1]);
     }   
   }, []);
-
-  useEffect(() => {
-    const sections = ref.current!.children;
-    let isActive: (NodeJS.Timeout | null) = null;
-    let idx = focus;
-    const wheel = (e: WheelEvent) => {
-      e.preventDefault();
-      if (isActive) return;
-      isActive = setTimeout(() => {
-        isActive = null;
-      }, 500);
-      if (e.deltaY < 0) {
-        if (idx > 0) idx--;
-      } else {
-        if (idx < 2) idx++;
-      }
-      dispatch(setFocus(idx));
-      sections[idx + 1].scrollIntoView({
-        behavior: 'smooth'
-      });
-    };
-    if (focus != 1) {
-      window.addEventListener('wheel', wheel, { passive: false });
-    }
-    return () => {
-      window.removeEventListener('wheel', wheel);
-    }
-  }, [focus]);
 
   return (
     <ThemeProvider theme={theme}>

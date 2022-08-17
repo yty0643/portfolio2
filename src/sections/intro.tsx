@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useAppSelector } from '../app/hooks';
 import LockBtn from '../components/lock_btn';
@@ -95,8 +95,39 @@ margin-left: auto;
 const Intro = () => {
     const theme = useAppSelector(selectTheme);
     const isLock = useAppSelector(selectIsLock);
+    const ref = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const intro = ref.current!;
+        const next = intro.nextSibling! as Element;
+        let isActive: (NodeJS.Timeout | null) = null;
+    
+        const wheel = (e: WheelEvent) => {
+            e.preventDefault();
+            if (isActive) return;
+            isActive = setTimeout(() => {
+                isActive = null;
+            }, 500);
+            if (e.deltaY < 0) {
+                intro.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            } else {
+                next.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        };
+        intro.addEventListener('wheel', wheel, { passive: false });
+        return () => {
+            intro.removeEventListener('wheel', wheel);
+        }
+    }, []);
+    
     return (
-        <Section isLight={theme}>
+        <Section
+            ref={ref}
+            isLight={theme}>
             <Box>
                 <Title>
                     안녕하세요.<br/>
