@@ -6,6 +6,7 @@ import Intro from './sections/intro';
 import Navbar from './sections/navbar';
 import Outro from './sections/outro';
 import Showcase from './sections/showcase';
+import Skills from './sections/skills';
 import { GlobalStyle } from './styles/global';
 import { theme } from './styles/theme';
 
@@ -21,7 +22,7 @@ const App = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const secCnt = 3;
+    const secCnt = 4;
     const sections = ref.current!.children;
     const observer = new IntersectionObserver((ev) => {
       let isfined = false;
@@ -35,7 +36,7 @@ const App = () => {
           }
         }
       });
-      if (!isfined) dispatch(setFocus(1)); // projects Section
+      if (!isfined) dispatch(setFocus(2)); // projects Section
     }, {
       root: null,
       rootMargin: '0px',
@@ -43,7 +44,7 @@ const App = () => {
     });
 
     for (let i = 0; i < secCnt; i++) {
-      if (i == 1) continue; // projects Section
+      if (i == 2) continue; // projects Section
       observer.observe(sections[i + 1]);
     }   
   }, []);
@@ -54,6 +55,7 @@ const App = () => {
       <Div ref={ref}>
         <Navbar />
         <Intro />
+        <Skills />
         <Showcase />
         <Outro />
       </Div>

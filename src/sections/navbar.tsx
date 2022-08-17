@@ -81,9 +81,10 @@ const Navbar = () => {
                 Yun Taeyoung
             </Logo>
             <Btns>
-                <NavBtn onClick={() => { onClick(0) }} index={0}>Intro</NavBtn>
-                <NavBtn onClick={() => { onClick(1) }} index={1}>Projects</NavBtn>
-                <NavBtn onClick={() => { onClick(2) }} index={2}>Contact</NavBtn>
+                <NavBtn onClick={() => { onClick(0) }} index={0}>Introduction</NavBtn>
+                <NavBtn onClick={() => { onClick(0) }} index={1}>Skills</NavBtn>
+                <NavBtn onClick={() => { onClick(1) }} index={2}>Projects</NavBtn>
+                <NavBtn onClick={() => { onClick(2) }} index={3}>Contact</NavBtn>
             </Btns>
             <Btns>
                 <ThemeToggle />

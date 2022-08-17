@@ -107,7 +107,7 @@ const Intro = () => {
             if (isActive) return;
             isActive = setTimeout(() => {
                 isActive = null;
-            }, 500);
+            }, 1000);
             if (e.deltaY < 0) {
                 intro.scrollIntoView({
                     behavior: 'smooth'
