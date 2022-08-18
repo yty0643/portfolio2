@@ -25,8 +25,9 @@
     color: rgb(100, 100, 255);
     color: rgb(67, 77, 95);
     transform: rotateY(360deg);
-    color: rgb(200, 209, 223);
+    color: rgb(239, 250, 249);
     background-color: rgb(91, 91, 124);
+    transform: translateX(-50%);
     color: initial;
     position: sticky;
     box-sizing: content-box;
@@ -51,4 +52,8 @@
     align-content: center;
     text-align: center;
     animation: 3s infinite ease-in-out alternate;
+    color: #57BBC1;
+    color: #41a3a97f;
+    color: rgb(239, 241, 246);
+    color: #b7e9eb5a
 }

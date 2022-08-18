@@ -56,6 +56,13 @@ const Navbar = () => {
     const theme = useSelector(selectTheme);;
     const ref = useRef<HTMLElement>(null);
     const [isActive, setIsActive] = useState<boolean>(true);
+    const sections = [
+        "Introduction",
+        "Skills",
+        "Edu",
+        "Projects",
+        "Contact",
+    ];
     
     const onClick = (index: number) => {
         const sections = ref.current!.parentNode!.children;
@@ -84,10 +91,7 @@ const Navbar = () => {
                 Yun Taeyoung
             </Logo>
             <Btns>
-                <NavBtn onClick={() => { onClick(0) }} index={0}>Introduction</NavBtn>
-                <NavBtn onClick={() => { onClick(1) }} index={1}>Skills</NavBtn>
-                <NavBtn onClick={() => { onClick(2) }} index={2}>Projects</NavBtn>
-                <NavBtn onClick={() => { onClick(3) }} index={3}>Contact</NavBtn>
+                {sections.map((sec, index) => <NavBtn key={index} index={index} onClick={() => { onClick(index); }}>{sec}</NavBtn>)}
             </Btns>
             <Btns>
                 <ThemeToggle />

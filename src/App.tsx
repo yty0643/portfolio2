@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { useAppDispatch } from './app/hooks';
 import { setFocus } from './features/focus/focusSlice';
+import Edu from './sections/edu';
 import Intro from './sections/intro';
 import Navbar from './sections/navbar';
 import Outro from './sections/outro';
@@ -21,7 +22,7 @@ const App = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const secCnt = 4;
+    const secCnt = 5;
     const sections = ref.current!.children;
     const observer = new IntersectionObserver((ev) => {
       let isfined = false;
@@ -35,7 +36,7 @@ const App = () => {
           }
         }
       });
-      if (!isfined) dispatch(setFocus(2)); // projects Section
+      if (!isfined) dispatch(setFocus(3)); // projects Section
     }, {
       root: null,
       rootMargin: '0px',
@@ -43,7 +44,7 @@ const App = () => {
     });
 
     for (let i = 0; i < secCnt; i++) {
-      if (i == 2) continue; // projects Section
+      if (i == 3) continue; // projects Section
       observer.observe(sections[i + 1]);
     }
   }, []);
@@ -55,6 +56,7 @@ const App = () => {
         <Navbar />
         <Intro />
         <Skills />
+        <Edu />
         <Showcase />
         <Outro />
       </Div>

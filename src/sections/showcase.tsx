@@ -44,9 +44,13 @@ ${({ theme, isLight }) => {
 }}
 transition: all ease-in 100ms;
 `
-const Box = styled.div`
+interface IBox{
+    reverse: boolean,
+}
+const Box = styled.div<IBox>`
 position: relative;
 display: flex;
+${({ reverse })=> reverse && `flex-direction: row-reverse;`}
 @media screen and (max-width: 1000px) {
     flex-direction: column;
 }
@@ -56,18 +60,18 @@ const Showcase = () => {
     const theme = useAppSelector(selectTheme);
     const focus = useAppSelector(selectFocus);
     const ref = useRef<HTMLElement>(null);
-    const images = [img1, img2, img3, img4, img5, img6, img1];
-    const titles = [
-        "Redux, RTK를 활용한 상태 관리",
+
+    const imageArr = [[img1, img2, img3, img4, img5, img6, img1],
+        [img21, img22, img23, img24, img25, img26],
+        [img31, img32, img33, img34]];
+    const titleArr = [["Redux, RTK를 활용한 상태 관리",
         "Axios를 활용한 REST API 사용",
         "AWS-Amplify를 활용한 웹 호스팅",
         "금융결제원 API를 활용한 계좌 조회",
         "Proxy server를 활용한 CORS 정책 문제 해결",
         "라이브러리 없이 다양한 Chart component 개발",
         "GitHub를 통한 소스코드 관리"
-    ];
-    const images2 = [img21, img22, img23, img24, img25, img26];
-    const titles2 = [
+    ], [
         "VAC Pattern을 적용한 코드 설계",
         "Firebase를 활용한 로그인 및 회원 관리",
         "Firebase의 RTDB를 활용한 DB 관리",
@@ -75,16 +79,14 @@ const Showcase = () => {
         "라이브러리 없이 다양한 Chart component 개발",
         "Dark/Light theme 구현",
         "GitHub를 통한 소스코드 관리"
-    ];
-    const images3 = [img31, img32, img33, img34];
-    const titles3 = [
+    ], [
         "Firebase를 활용한 DB 및 인증 관리",
         "Github API를 활용한 repository 접근",
         "Github API를 활용한 커밋 등록",
         "GitHub를 통한 소스코드 관리",
-    ];
+    ]];
 
-    const tags = [
+    const tagArr = [[
         "React",
         "Typescript",
         "Redux",
@@ -92,47 +94,39 @@ const Showcase = () => {
         "AWS-Amplify",
         "REST API",
         "GitHub",
-    ];
-    const tags2 = [
+    ], [
         "React",
         "Typescript",
         "Firebase",
         "GitHub",
         "VAC Pattern",
         "REST API"
-    ];
-    const tags3 = [
+    ], [
         "React",
         "Javascript",
         "Firebase",
         "GitHub",
         "REST API"
+    ]];
+    const descArr = [
+        "금융결제원 API를 활용한 계좌조회 및 거래내역 통계 웹",
+        "Firebase DB, Auth를 활용한 습관 관리 웹",
+        "GitHub API를 활용한 커밋 예약 웹"
     ];
-
     const videos = [video1, video2, video3];
 
     return (
         <Section
             isLight={theme}
             ref={ref}>
-            <Box>
-                <ProjMain isActive={focus == 2} video={videos[0]} tags={tags}>
-                    금융결제원 API를 활용한 계좌조회 및 거래내역 통계 웹
-                </ProjMain>
-                <ProjSub isActive={focus == 2} titles={titles} images={images} />
-            </Box>
-            <Box>
-                <ProjSub reverse isActive={focus == 2} titles={titles2} images={images2} />
-                <ProjMain reverse isActive={focus == 2} video={videos[1]} tags={tags2}>
-                    Firebase DB, Auth를 활용한 습관 관리 웹
-                </ProjMain>
-            </Box>
-            <Box>
-                <ProjMain isActive={focus == 2} video={videos[2]} tags={tags3}>
-                    GitHub API를 활용한 커밋 예약 웹
-                </ProjMain>
-                <ProjSub isActive={focus == 2} titles={titles3} images={images3} />
-            </Box>
+            {imageArr.map((images, index) =>
+                <Box  key={index} reverse={index == 1}>
+                    <ProjMain isActive={focus == 3} video={videos[index]} tags={tagArr[index]}>
+                        {descArr[index]}
+                    </ProjMain>
+                    <ProjSub isActive={focus == 3} titles={titleArr[index]} images={images} />
+                </Box>
+            )}
         </Section>
     );
 };

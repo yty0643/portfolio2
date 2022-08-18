@@ -52,7 +52,7 @@ margin-bottom: 3rem;
 border-radius: 1rem;
 overflow: hidden;
 ${({ theme, isLight }) => {
-    const bgColor = isLight ? "rgb(240, 245, 250)" : "rgb(35, 36, 37)";
+    const bgColor: string = isLight ? "rgb(240, 245, 250)" : "rgb(35, 36, 37)";
     return `
     background-color: ${bgColor};
     `

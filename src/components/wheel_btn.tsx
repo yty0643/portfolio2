@@ -33,13 +33,13 @@ interface IBtn{
     isLight: boolean,
 }
 const Btn = styled.button<IBtn>`
-z-index: 5;
+z-index: 1;
 position: absolute;
 left: 50%;
 font-size: 2.5rem;
 width: 2.5rem;
 height: 2.5rem;
-transparentX(-50%);
+transform: translateX(-50%);
 background-color: transparent;
 transform: scaleX(1.8);
 animation: ${slide} 4s infinite ease-in-out;
