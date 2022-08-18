@@ -21,6 +21,9 @@ import img31 from '../images/project3/img1.png';
 import img32 from '../images/project3/img2.png';
 import img33 from '../images/project3/img3.png';
 import img34 from '../images/project3/img4.png';
+import video1 from '../videos/receipt.mp4';
+import video2 from '../videos/habit.mp4';
+import video3 from '../videos/crw.mp4';
 
 
 interface ISection{
@@ -103,20 +106,28 @@ const Showcase = () => {
         "REST API"
     ];
 
+    const videos = [video1, video2, video3];
+
     return (
         <Section
             isLight={theme}
             ref={ref}>
             <Box>
-                <ProjMain isActive={focus == 2} image={images[0]} tags={tags} />
+                <ProjMain isActive={focus == 2} video={videos[0]} tags={tags}>
+                    금융결제원 API를 활용한 계좌조회 및 거래내역 통계 웹
+                </ProjMain>
                 <ProjSub isActive={focus == 2} titles={titles} images={images} />
             </Box>
             <Box>
                 <ProjSub reverse isActive={focus == 2} titles={titles2} images={images2} />
-                <ProjMain reverse isActive={focus == 2} image={images[0]} tags={tags2} />
+                <ProjMain reverse isActive={focus == 2} video={videos[1]} tags={tags2}>
+                    Firebase DB, Auth를 활용한 습관 관리 웹
+                </ProjMain>
             </Box>
             <Box>
-                <ProjMain isActive={focus == 2} image={images[0]} tags={tags3} />
+                <ProjMain isActive={focus == 2} video={videos[2]} tags={tags3}>
+                    GitHub API를 활용한 커밋 예약 웹
+                </ProjMain>
                 <ProjSub isActive={focus == 2} titles={titles3} images={images3} />
             </Box>
         </Section>

@@ -10,11 +10,11 @@ interface IBtn{
     isLight: boolean,
 }
 const Btn = styled.button<IBtn>`
-width: 2rem;
-height: 2rem;
+width: 3rem;
+height: 3rem;
 background-color: white;
 border-bottom: 1px solid rgb(214, 216, 221);
-font-size: 1rem;
+font-size: 1.5rem;
 ${({ theme, isLight }) => {
     const color = isLight ? "light" : "dark";
     return `

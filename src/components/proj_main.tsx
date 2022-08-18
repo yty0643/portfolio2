@@ -36,6 +36,7 @@ transition: all ease-in 800ms;
 const Tagbox = styled.div`
 display: flex;
 width: 100%;
+padding: 3rem 3rem 1.5rem 3rem;
 flex-wrap: wrap;
 align-content: flex-start;
 `
@@ -44,9 +45,10 @@ interface IImgbox{
     isLight: boolean,
 }
 const Imgbox = styled.div<IImgbox>`
+overflow: hidden;
 display: flex;
+flex-direction: column;
 height: 100%;
-padding: 3rem;
 border-radius: 1rem;
 box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
 :hover{
@@ -63,17 +65,22 @@ ${({ theme, isLight }) => {
 }}
 `
 
-const Img = styled.img`
-max-height: 50%;
-`
-
 const Emoji = styled.p`
 font-weight: 700;
 font-size: 1.5rem;
 padding-right: 1.5rem;
 `
 
-const ProjMain = ({ reverse, isActive, image, tags }: { reverse?: boolean, isActive: boolean, image: string, tags: string[] }) => {
+const Desc = styled.p`
+font-size: 2rem;
+font-weight: 700;
+padding: 0 3rem 3rem 3rem;
+`
+const Video = styled.video`
+
+`
+
+const ProjMain = ({ reverse, isActive, video, tags, children }: { reverse?: boolean, isActive: boolean, video: string, tags: string[], children: string }) => {
     const theme = useAppSelector(selectTheme);
     return (
         <Div
@@ -82,13 +89,16 @@ const ProjMain = ({ reverse, isActive, image, tags }: { reverse?: boolean, isAct
             <Imgbox isLight={theme}>
                 <Tagbox>
                     <Emoji>
-                    📌 태그
+                        📌 태그
                     </Emoji>
                     {tags.map((tag, index) =>
                         <ProjTag key={index}>{tag}</ProjTag>
                     )}
                 </Tagbox>
-                {/* <Img src={image} alt="" /> */}
+                <Desc>
+                    {children}
+                </Desc>
+                <Video src={video} width="100%" height="100%" loop controls muted />
             </Imgbox>
         </Div>
     );

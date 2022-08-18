@@ -32,7 +32,7 @@ ${({ theme, isLight }) => {
 
 const Desc = styled.p`
 height: 35%;
-font-size: 2rem;
+font-size: 1.5rem;
 font-weight: 700;
 `
 const Imgbox = styled.div`
