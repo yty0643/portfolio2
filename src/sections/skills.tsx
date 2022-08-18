@@ -20,8 +20,8 @@ const Section = styled.section<ISection>`
 position: relative;
 display: flex;
 flex-direction: column;
-align-items: center;
 justify-content: center;
+align-items: center;
 width: 100%;
 height: 100vh;
 padding: 3rem 10%;
@@ -46,9 +46,8 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 width: 80%;
-height: 100%;
+height: 50%;
 margin-bottom: 3rem;
-background-color: rgb(240, 245, 250);
 border-radius: 1rem;
 overflow: hidden;
 ${({ theme, isLight }) => {
@@ -59,6 +58,10 @@ ${({ theme, isLight }) => {
 }}
 `
 const Title = styled.div`
+z-index: 1;
+display: flex;
+align-items: center;
+justify-content: center;
 position: absolute;
 top: 2rem;
 left: 2rem;
@@ -67,18 +70,22 @@ font-weight: 700;
 `
 
 const Desc = styled.p`
-width: 50%;
+width: 80%;
 font-size: 2rem;
 font-weight: 700;
 color: rgb(116, 119, 130);
 `
+const Desc2 = styled(Desc)`
+margin-top: 0.5rem;
+font-size: 1rem;
+`
 
 const slide = (x: number) => keyframes`
 0%{
-    transform: rotateZ(-10deg) translate(${-x}%, -10px);
+    transform: rotateZ(-10deg) translate(${-x}%, -0px);
 }
 100%{
-    transform: rotateZ(-10deg) translate(${x}%, -10px);
+    transform: rotateZ(-10deg) translate(${x}%, -0px);
 }
 `;
 
@@ -92,6 +99,18 @@ ${({ x })=> css`animation: ${slide(x)} 15s infinite alternate;`}
 :hover{
     animation-play-state: paused;
 }
+`
+
+const A = styled.a`
+color: rgb(116, 119, 130);
+:hover{
+    color: rgb(166, 169, 180);
+}
+`
+
+const Emoji = styled.p`
+display: inline;
+padding-bottom: 1rem;
 `
 
 const Skill = () => {
@@ -112,7 +131,7 @@ const Skill = () => {
             isLight={theme}>
             <Div isLight={theme}>
                 <Title>
-                    기술 스택
+                    <Emoji>🧰</Emoji> 기술 스택
                 </Title>
                 <Skbox x={xArr[0]}>
                     {iconArr.map((icon, index) =>
@@ -137,8 +156,13 @@ const Skill = () => {
                 </Skbox>
             </Div>
             <Desc>
-                실무에서 주로 사용하는 프레임워크, 라이브러리 위주로 꾸준히 공부하고 있습니다.
+                📚 실무에서 주로 사용하는 프레임워크, 라이브러리 위주로 꾸준히 공부하고 있습니다.
             </Desc>
+            <Desc2>
+                프레임워크, 라이브러리를 통한 개발 역량을 강화하기 위해 여러 개인 프로젝트를 진행하고 있으며,
+                소스코드는 GitHub를 통해 관리하고 있습니다.
+                새롭게 알게된 내용은 마크다운 문서화 하여 <A href='https://github.com/yty0643/development-documents' target="_blank">development-documents repository</A>에 관리하고 있습니다.
+            </Desc2>
         </Section>
     );
 };

@@ -18,7 +18,7 @@ flex-direction: column;
 height: 100vh;
 padding: 3rem 1.5rem;
 ${({ isActive, reverse }) => {
-    const x = reverse ? 5 : -5;
+    const x:number = reverse ? 5 : -5;
     return isActive ?
     `
     opacity: 1;
@@ -37,6 +37,7 @@ const Tagbox = styled.div`
 display: flex;
 width: 100%;
 flex-wrap: wrap;
+align-content: flex-start;
 `
 
 interface IImgbox{
@@ -45,6 +46,7 @@ interface IImgbox{
 const Imgbox = styled.div<IImgbox>`
 display: flex;
 height: 100%;
+padding: 3rem;
 border-radius: 1rem;
 box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
 :hover{
@@ -65,18 +67,27 @@ const Img = styled.img`
 max-height: 50%;
 `
 
+const Emoji = styled.p`
+font-weight: 700;
+font-size: 1.5rem;
+padding-right: 1.5rem;
+`
+
 const ProjMain = ({ reverse, isActive, image, tags }: { reverse?: boolean, isActive: boolean, image: string, tags: string[] }) => {
     const theme = useAppSelector(selectTheme);
     return (
         <Div
             reverse={reverse}
             isActive={isActive}>
-            <Tagbox>
-                {tags.map((tag, index) =>
-                    <ProjTag key={index}>{tag}</ProjTag>
-                )}
-            </Tagbox>
             <Imgbox isLight={theme}>
+                <Tagbox>
+                    <Emoji>
+                    📌 태그
+                    </Emoji>
+                    {tags.map((tag, index) =>
+                        <ProjTag key={index}>{tag}</ProjTag>
+                    )}
+                </Tagbox>
                 {/* <Img src={image} alt="" /> */}
             </Imgbox>
         </Div>

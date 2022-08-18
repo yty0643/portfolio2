@@ -8,8 +8,12 @@ interface IDiv{
     isLight: boolean,
 }
 const Div = styled.div<IDiv>`
+display: flex;
+align-items:center;
+justify-content: center;
+padding: 0 1rem;
+height: 2rem;
 margin: 0 0.5rem 0.5rem 0;
-padding: 0.5rem 1rem;
 border-radius: 3rem;
 font-weight: 500;
 font-size 1rem;

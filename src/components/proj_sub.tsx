@@ -48,7 +48,7 @@ const ProjSub = ({ reverse, isActive, titles, images }: { reverse?: boolean, isA
                 <ProjPreview
                     key={index}
                     img={images[index]}>
-                    {title}
+                    {'🔎 '+title}
                 </ProjPreview>
             )}
         </Div>
