@@ -10,13 +10,13 @@ const initialState: IThemeState = {
 };
 
 export const themeSlice = createSlice({
-    name: 'theme',
-    initialState,
-    reducers: {
-        toggle: (state) => {
-            state.value = !state.value;
-        },
-    }
+  name: 'theme',
+  initialState,
+  reducers: {
+    toggle: (state) => {
+      state.value = !state.value;
+    },
+  }
 });
 
 export const { toggle } = themeSlice.actions;

@@ -13,6 +13,11 @@ background-color: rgb(34, 34, 47);
 @media screen and (max-height: 600px) {
     flex-direction: column;
 }
+@media screen and (max-width: 1000px) {
+    flex-direction: column;
+    height auto;
+    padding: 3rem 10%;
+}
 `
 
 const Box = styled.div`

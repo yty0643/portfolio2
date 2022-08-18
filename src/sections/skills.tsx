@@ -12,6 +12,7 @@ import logo6 from '../images/logo/github.png';
 import logo7 from '../images/logo/fb.png';
 import logo8 from '../images/logo/aws.png';
 import logo9 from '../images/logo/c.png';
+import WheelBtn from '../components/wheel_btn';
 
 interface ISection{
     isLight: boolean,
@@ -163,6 +164,7 @@ const Skill = () => {
                 소스코드는 GitHub를 통해 관리하고 있습니다.
                 새롭게 알게된 내용은 마크다운 문서화 하여 <A href='https://github.com/yty0643/development-documents' target="_blank">development-documents repository</A>에 관리하고 있습니다.
             </Desc2>
+            <WheelBtn />
         </Section>
     );
 };

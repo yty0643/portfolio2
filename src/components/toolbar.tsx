@@ -56,10 +56,8 @@ interface ITools{
 const Tools = styled.div<ITools>`
 overflow-y: scroll;
 overflow-x: visible;
-height: calc(100vh - 6rem - 6rem - 3rem);
 max-height: 10rem;
 ${({ isActive })=> !isActive && `height: 0rem;`}
-transition: all ease-in 300ms;
 
 ::-webkit-scrollbar {
     width: 8px;

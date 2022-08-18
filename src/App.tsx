@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { useAppDispatch, useAppSelector } from './app/hooks';
-import { selectFocus, setFocus } from './features/focus/focusSlice';
+import { useAppDispatch } from './app/hooks';
+import { setFocus } from './features/focus/focusSlice';
 import Intro from './sections/intro';
 import Navbar from './sections/navbar';
 import Outro from './sections/outro';
@@ -17,7 +17,6 @@ width: calc(100vw - (100vw - 100%));
 `
 
 const App = () => {
-  const focus = useAppSelector(selectFocus);
   const dispatch = useAppDispatch();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -28,7 +27,7 @@ const App = () => {
       let isfined = false;
       ev.forEach((e: IntersectionObserverEntry, index) => {
         if (e.isIntersecting) {
-          for (let i = 0; i < secCnt; i++){
+          for (let i = 0; i < secCnt; i++) {
             if (e.target == sections[i + 1]) {
               dispatch(setFocus(i));
               isfined = true;
@@ -46,7 +45,7 @@ const App = () => {
     for (let i = 0; i < secCnt; i++) {
       if (i == 2) continue; // projects Section
       observer.observe(sections[i + 1]);
-    }   
+    }
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useAppSelector } from '../app/hooks';
 import LockBtn from '../components/lock_btn';
@@ -9,6 +9,7 @@ import { selectIsLock } from '../features/isLock/isLockSlice';
 import DocBtn from '../components/doc_btn';
 import ContactBtn from '../components/contact_btn';
 import { selectTheme } from '../features/theme/themeSlice';
+import WheelBtn from '../components/wheel_btn';
 
 interface ISection{
     isLight: boolean,
@@ -95,38 +96,9 @@ margin-left: auto;
 const Intro = () => {
     const theme = useAppSelector(selectTheme);
     const isLock = useAppSelector(selectIsLock);
-    const ref = useRef<HTMLElement>(null);
-
-    // useEffect(() => {
-    //     const intro = ref.current!;
-    //     const next = intro.nextSibling! as Element;
-    //     let isActive: (NodeJS.Timeout | null) = null;
-    
-    //     const wheel = (e: WheelEvent) => {
-    //         e.preventDefault();
-    //         if (isActive) return;
-    //         isActive = setTimeout(() => {
-    //             isActive = null;
-    //         }, 1000);
-    //         if (e.deltaY < 0) {
-    //             intro.scrollIntoView({
-    //                 behavior: 'smooth'
-    //             });
-    //         } else {
-    //             next.scrollIntoView({
-    //                 behavior: 'smooth'
-    //             });
-    //         }
-    //     };
-    //     intro.addEventListener('wheel', wheel, { passive: false });
-    //     return () => {
-    //         intro.removeEventListener('wheel', wheel);
-    //     }
-    // }, []);
     
     return (
         <Section
-            ref={ref}
             isLight={theme}>
             <Box>
                 <Title>
@@ -150,6 +122,7 @@ const Intro = () => {
             </BtnBox>
             <Toolbar />
             <Lock isLock={isLock} />
+            <WheelBtn />
         </Section>
     );
 };

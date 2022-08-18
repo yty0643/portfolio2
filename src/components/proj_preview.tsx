@@ -14,7 +14,7 @@ margin: 0 1.5rem;
 border-radius: 1rem;
 box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
 :hover{
-    transform: translateY(-0.5);
+    transform: translateY(-0.5rem);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
 }
 transition: all ease-in 100ms;

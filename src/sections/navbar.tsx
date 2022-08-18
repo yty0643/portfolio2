@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useAppSelector } from '../app/hooks';
 import NavBtn from '../components/nav_btn';
 import ThemeToggle from '../components/theme_toggle';
 import { selectTheme } from '../features/theme/themeSlice';
@@ -34,6 +33,10 @@ ${({ theme, isLight }) => {
 ${({ isLight }) => !isLight && `border-bottom: 1px solid rgb(100,100,100);`}
 box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 transition: all ease-in 100ms;
+@media screen and (max-width: 600px) {
+    justify-content: center;
+    padding: 0;
+}
 `
 
 const Logo = styled.div`

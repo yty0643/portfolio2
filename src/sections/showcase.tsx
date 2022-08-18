@@ -47,6 +47,9 @@ transition: all ease-in 100ms;
 const Box = styled.div`
 position: relative;
 display: flex;
+@media screen and (max-width: 1000px) {
+    flex-direction: column;
+}
 `
 
 const Showcase = () => {

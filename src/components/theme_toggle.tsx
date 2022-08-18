@@ -27,6 +27,13 @@ background-color: transparent;
     color: white;
     background-color: rgb(60, 118, 233);
 }
+@media screen and (max-width: 900px) {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    padding: 2px 0;
+    margin-left: 1rem;
+}
 `
 
 const ThemeToggle = () => {

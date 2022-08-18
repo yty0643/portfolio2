@@ -19,6 +19,7 @@ position: absolute;
 top: 0;
 left: 0;
 display: flex;
+flex-direction: column;
 align-items: center;
 justify-content: center;
 font-size: 1rem;
@@ -60,7 +61,7 @@ border-radius: 0 10px 10px 0;
 background-color: rgb(181, 183, 189);
 cursor: crosshair;
 :hover{
-    background-color: ${lighten(0.15, `rgb(181, 183, 189)`)}
+    background-color: ${lighten(0.3, `rgb(181, 183, 189)`)}
     
 }
 `

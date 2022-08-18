@@ -43,7 +43,7 @@ const initialState: INodesState = {
             opY: 0,
             width: 220,
             height: 220,
-            name: "",
+            name: "👨‍🔧 1996.7 ~",
         },
         {
             x: 700,

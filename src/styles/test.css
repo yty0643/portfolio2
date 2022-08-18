@@ -50,5 +50,5 @@
     align-items: center;
     align-content: center;
     text-align: center;
-    
+    animation: 3s infinite ease-in-out alternate;
 }

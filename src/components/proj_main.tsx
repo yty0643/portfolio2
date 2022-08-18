@@ -32,6 +32,9 @@ ${({ isActive, reverse }) => {
 }
 }}
 transition: all ease-in 800ms;
+@media screen and (max-width: 1000px) {
+    position: static;
+}
 `
 const Tagbox = styled.div`
 display: flex;

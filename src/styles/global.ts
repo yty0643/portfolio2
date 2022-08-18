@@ -21,9 +21,9 @@ export const GlobalStyle = createGlobalStyle<IGS>`
         margin: 0;
         font-family: 'Mulish', sans-serif;
         -webkit-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
     }
       
     code {
