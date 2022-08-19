@@ -40,9 +40,10 @@ transition: all ease-in 100ms;
 `
 
 const Logo = styled.div`
-font-weight: 500;
+font-weight: 700;
 font-size: 1.2rem;
 padding: 2px 10px;
+color: rgb(60, 118, 233);
 @media screen and (max-width: 700px) {
     font-size: 0.8rem;
 }
@@ -57,11 +58,11 @@ const Navbar = () => {
     const ref = useRef<HTMLElement>(null);
     const [isActive, setIsActive] = useState<boolean>(true);
     const sections = [
-        "Introduction",
-        "Skills",
-        "Edu",
-        "Projects",
-        "Contact",
+        "소개",
+        "기술스택",
+        "학력",
+        "프로젝트",
+        "연락",
     ];
     
     const onClick = (index: number) => {
