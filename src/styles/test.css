@@ -7,6 +7,7 @@
     width: calc(100px * 2px);
     overflow: hidden;
     touch-action: none;
+    text-transform: uppercase;
     pointer-events: none;
     flex-direction: row;
     color: rgb(181, 183, 189);
@@ -15,7 +16,7 @@
     color: rgb(157, 161, 173);
     color: rgb(230, 233, 238);
     color: rgb(214, 216, 221);
-    color: rgb(16, 16, 17);
+    color: rgb(29, 29, 32);
     color: rgb(134, 255, 100);
     color: rgb(255, 105, 100);
     color: rgb(208, 208, 0);
@@ -23,6 +24,7 @@
     color: rgb(239, 100, 255);
     color: rgb(24, 209, 7);
     color: rgba(39, 112, 190, 0.5);
+    color: rgb(41, 43, 47);
     color: rgb(67, 77, 95);
     transform: rotateY(360deg);
     color: #4173a97f;

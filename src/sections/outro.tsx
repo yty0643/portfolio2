@@ -1,34 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useAppSelector } from '../app/hooks';
+import Dev from '../components/dev';
+import { selectTheme } from '../features/theme/themeSlice';
 
-const Section = styled.section`
-display:flex;
-align-items:center;
-justify-content: center;
-width: 100%;
-height 50vh;
-min-height: 25rem;
-padding: 0 10%;
-background-color: rgb(34, 34, 47);
-@media screen and (max-height: 600px) {
-    flex-direction: column;
+interface ISections{
+    isLight: boolean,
 }
-@media screen and (max-width: 1000px) {
-    flex-direction: column;
-    height auto;
-    padding: 3rem 10%;
-}
-`
-
-const Box = styled.div`
-flex: 1 1 40%;
+const Section = styled.section<ISections>`
 display:flex;
 flex-direction: column;
 align-items:center;
 justify-content: center;
+width: 100%;
+height 70vh;
+transition: all ease-in 100ms;
+${({ theme, isLight }) => {
+    const color = isLight ? "light" : "dark";
+    return `
+    background-color: ${theme[color].bgColor2};
+    `
+}}
 `
-const Box2 = styled(Box)`
-flex: 1 1 60%;
+
+const Box = styled.div`
+display:flex;
+height: 100%;
+flex-direction: column;
+align-items:center;
+justify-content: center;
+background-color: rgb(42, 45, 50);
 `
 
 const Title = styled.p`
@@ -36,20 +37,12 @@ margin-bottom: 1.5rem;
 font-size: 2rem;
 font-weight: 700;
 color: rgb(157, 161, 173);
-@media screen and (max-width: 1200px) {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
 `
 const Desc = styled.p`
 margin-bottom: 1.5rem;
 font-size: 1rem;
 font-weight: 700;
 color: rgb(157, 161, 173);
-@media screen and (max-width: 1200px) {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
-}
 `
 
 const InfoBox = styled.div`
@@ -70,47 +63,12 @@ padding-left: 1rem;
 `
 
 
-const Tags = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-flex-wrap: wrap;
-margin: 1rem 0 0 1rem;
-`
-
-const Tag = styled.div`
-display:flex;
-align-items: center;
-justify-content: center;
-width: 10rem;
-height: 4rem;
-margin: 0 1rem 1rem 0;
-padding: 1rem 3rem;
-border-radius: 10px;
-background-color: rgb(15, 15, 21);
-font-size: 1rem;
-font-weight: 700;
-color: rgb(91, 91, 124);
-@media screen and (max-width: 1200px) {
-    width: 8rem;
-    height: 3rem;
-    font-size: 0.8rem;
-}
-`
-
 const Outro = () => {
+    const theme = useAppSelector(selectTheme);
     return (
-        <Section>
+        <Section isLight={theme}>
+            <Dev />
             <Box>
-                <Title>Developed by</Title>
-                <Tags>
-                    <Tag>React</Tag>
-                    <Tag>Typescript</Tag>
-                    <Tag>Redux</Tag>
-                    <Tag>styled component</Tag>
-                </Tags>
-            </Box>
-            <Box2>
                 <Title>Contact me</Title>
                 <Desc>
                     유지 보수하기 좋은 코드, 확장성 있는 설계가 가능한 개발자로 성장하고 싶습니다.
@@ -123,7 +81,7 @@ const Outro = () => {
                     <Cate><Info>Place :</Info><Info2>경남 창원시 진해구</Info2></Cate>
                     <Cate><Info>GitHub :</Info><Info2>https://github.com/yty0643</Info2></Cate>
                 </InfoBox>
-            </Box2>
+            </Box>
         </Section>
     );
 };
