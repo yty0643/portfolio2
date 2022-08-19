@@ -58,6 +58,15 @@ transform: translateX(-50%) translateY(-3.25rem);
 `}
 `
 
+const Title = styled.p`
+position: absolute;
+right: 1rem;
+top: 1rem;
+font-weight: 500;
+font-size: 1rem;
+color: rgb(39, 112, 190);
+`
+
 interface IDesc{
     isLight:boolean,
 }
@@ -110,7 +119,7 @@ ${({ isActive, value }) => {
 `
 
 
-const EduCard = ({ value, children }: { value: number, children: string }) => {
+const EduCard = ({ value, title, children }: { value: number, title: string, children: string }) => {
     const [isActive, setIsActive] = useState<boolean>(false);
     const theme = useAppSelector(selectTheme);
     const focus = useAppSelector(selectFocus);
@@ -120,6 +129,9 @@ const EduCard = ({ value, children }: { value: number, children: string }) => {
             <Card
                 onMouseEnter={() => { setIsActive(true) }}
                 onMouseLeave={() => { setIsActive(false) }}>
+                <Title>
+                    {title}
+                </Title>
                 <Desc isLight={theme}>
                     {value}
                 </Desc>

@@ -35,9 +35,9 @@ const Edu = () => {
     return (
         <Section
             isLight={theme}>
-            <EduCard value={4.41}>부산경상대학교</EduCard>
-            <EduCard value={631}>육군 병장</EduCard>
-            <EduCard value={3.3}>동아대학교</EduCard>
+            <EduCard value={4.41} title={"스마트앱콘텐츠"}>부산경상대학교</EduCard>
+            <EduCard value={631} title={""}>육군 병장</EduCard>
+            <EduCard value={3.3} title={"컴퓨터공학"}>동아대학교</EduCard>
             <WaveBg />
             <WheelBtn />
         </Section>

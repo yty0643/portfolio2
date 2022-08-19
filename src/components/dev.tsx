@@ -13,7 +13,7 @@ align-items: center;
 justify-content: center;
 color: rgb(180, 183, 188);
 font-size: 2rem;
-font-weight: 700;
+font-weight: 500;
 margin-bottom: 1rem;
 `
 const Tools = styled.div`
