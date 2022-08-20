@@ -38,7 +38,7 @@ const App = () => {
       });
       if (!isfined) dispatch(setFocus(3)); // projects Section
     }, {
-      root: null,
+      root: document,
       rootMargin: '0px',
       threshold: 0.5,
     });

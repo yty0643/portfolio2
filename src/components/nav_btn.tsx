@@ -21,6 +21,7 @@ ${({ theme, isLight }) => {
 }}
 border-radius: 2rem;
 background-color: transparent;
+white-space:nowrap;
 :hover{
     background-color: rgb(230, 233, 238);
 }

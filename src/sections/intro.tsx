@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useRef } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { useAppSelector } from '../app/hooks';
 import LockBtn from '../components/lock_btn';
 import Toolbar from '../components/toolbar';
@@ -10,6 +10,7 @@ import DocBtn from '../components/doc_btn';
 import ContactBtn from '../components/contact_btn';
 import { selectTheme } from '../features/theme/themeSlice';
 import WheelBtn from '../components/wheel_btn';
+import { selectFocus } from '../features/focus/focusSlice';
 
 interface ISection{
     isLight: boolean,
@@ -64,13 +65,44 @@ width: 30%;
 transform: translateY(-50%);
 `
 
-const Title = styled.p`
+const blink = keyframes`
+0%{
+    opacity: 0;
+}
+49%{
+    opacity: 0;
+}
+50%{
+    opacity: 1;
+}
+`
+
+interface ITitle{
+    isLight: boolean,
+}
+const Title = styled.p<ITitle>`
 margin-bottom: 1.5rem;
 font-size: 3rem;
 font-weight: 700;
 @media screen and (max-width: 1000px) {
     font-size: 2rem;
     font-weight: 500;
+}
+::after{
+    display: inline-block;
+    content: '.';
+    color: transparent;
+    width: 3px;
+    height: 100%;
+    margin-left: 5px;
+    ${({ theme, isLight }) => {
+        const color = isLight ? "light" : "dark";
+        return `
+        background-color: ${theme[color].color};
+        `
+    }}
+    animation: ${blink} 600ms infinite alternate;
+    
 }
 `
 
@@ -96,14 +128,33 @@ margin-left: auto;
 const Intro = () => {
     const theme = useAppSelector(selectTheme);
     const isLock = useAppSelector(selectIsLock);
+    const focus = useAppSelector(selectFocus);
+    const ref = useRef<HTMLParagraphElement>(null);
+
+    useEffect(() => {
+        const title = ref.current!;
+        if (focus != 0) {
+            title.innerText = '';
+            return;
+        };
+        const str = "안녕하세요.\n웹 프론트엔드 개발자 윤태영입니다."
+        let temp = '';
+        let i = 0;
+        const typing = setInterval(() => {
+            if (i == str.length-1) clearInterval(typing);
+            temp += (str[i++]);
+            title.innerText = temp;
+        }, 200);
+        return () => {
+            clearInterval(typing);
+        }
+    }, [focus]);
     
     return (
         <Section
             isLight={theme}>
             <Box>
-                <Title>
-                    안녕하세요.<br/>
-                    웹 프론트엔드 개발자 윤태영입니다.
+                <Title isLight={theme} ref={ref}>
                 </Title>
                 <SubTitle>
                     주로 사용하는 기술 스택은 Typescript, Javascript, React 입니다.
