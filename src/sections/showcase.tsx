@@ -114,14 +114,14 @@ const Showcase = () => {
         "GitHub API를 활용한 커밋 예약 웹"
     ];
     const videos = [video1, video2, video3];
-
+    const urls = ['https://github.com/yty0643/smart-receipt', 'https://github.com/yty0643/habit-manager', 'https://github.com/yty0643/crw'];
     return (
         <Section
             isLight={theme}
             ref={ref}>
             {imageArr.map((images, index) =>
                 <Box  key={index} reverse={index == 1}>
-                    <ProjMain isActive={focus == 3} video={videos[index]} tags={tagArr[index]}>
+                    <ProjMain isActive={focus == 3} video={videos[index]} tags={tagArr[index]} url={urls[index]}>
                         {descArr[index]}
                     </ProjMain>
                     <ProjSub isActive={focus == 3} titles={titleArr[index]} images={images} />

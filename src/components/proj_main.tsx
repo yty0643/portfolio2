@@ -83,12 +83,16 @@ const Video = styled.video`
 
 `
 
-const ProjMain = ({ reverse, isActive, video, tags, children }: { reverse?: boolean, isActive: boolean, video: string, tags: string[], children: string }) => {
+const ProjMain = ({ reverse, isActive, video, tags,url, children }: { reverse?: boolean, isActive: boolean, video: string, tags: string[], url: string,children: string }) => {
     const theme = useAppSelector(selectTheme);
+    const onClick = () => {
+        window.open(url);
+    }
     return (
         <Div
             reverse={reverse}
-            isActive={isActive}>
+            isActive={isActive}
+            onClick={onClick}>
             <Imgbox isLight={theme}>
                 <Tagbox>
                     <Emoji>
