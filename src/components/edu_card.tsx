@@ -11,6 +11,9 @@ height: 20rem;
 & + &{
     margin-left: 3rem;
 }
+@media screen and (max-width: 1000px) {
+    height: 15rem;
+}
 `
 
 const Card = styled.div`
@@ -56,6 +59,10 @@ z-index: 2;
 padding: 0.5rem 2rem 0.5rem;
 transform: translateX(-50%) translateY(-3.25rem);
 `}
+@media screen and (max-width: 1000px) {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+}
 `
 
 const Title = styled.p`
@@ -65,6 +72,9 @@ top: 1rem;
 font-weight: 500;
 font-size: 1rem;
 color: rgb(39, 112, 190);
+@media screen and (max-width: 1000px) {
+    font-size: 0.8rem;
+}
 `
 
 interface IDesc{
@@ -85,6 +95,9 @@ ${({ theme, isLight }) => {
     color: ${theme[color].color};
     `
 }}
+@media screen and (max-width: 1000px) {
+    font-size: 1.5rem;
+}
 `
 
 const Svg = styled.svg`
@@ -100,6 +113,9 @@ fill: none;
 stroke-width: 10;
 stroke: rgba(39, 112, 190, 0.1);
 stroke-linecap: round;
+@media screen and (max-width: 1000px) {
+    transform: scale(0.5) translate(50%,50%);
+}
 `
 
 interface ICircle{
